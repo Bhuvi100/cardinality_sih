@@ -1,0 +1,11 @@
+/ml/Scrip+ts/
+/ml/Lib/
+/ml/.idea/
+
+.idea/
+
+ml/Scripts/
+
+ml/TweetScrape/__pycache__/
+
+ml/pyvenv.cfg
