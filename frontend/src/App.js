@@ -8,6 +8,11 @@ import Landing from './pages/LandingPage';
 import UserProfile from './pages/User/userProfile';
 import MyQueries from './pages/User/userQueries';
 import GrievanceForm from './components/greivanceForm';
+import InstituteDashboard from './pages/Institute/InstituteDashboard';
+import InstituteQueries from './pages/Institute/instituteQueries';
+import InstituteProfile from './pages/Institute/InstituteProfile';
+import AdminDashboard from './pages/Admin/AdminDashboard';
+import ResolverDashboard from './pages/Resolver/ResolverDashboard';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 function App() {
   return (
@@ -17,10 +22,19 @@ function App() {
       <Route path="/landing" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+
+      <Route path="/resolverdashboard" element={<ResolverDashboard />} />
+
       <Route path="/userdashboard" element={<UserDashboard />} />
       <Route path="/userdashboard/form" element={<GrievanceForm/>}/>
       <Route path="/myqueries" element={<MyQueries />} />
       <Route path="/profile" element={<UserProfile />} />
+
+      <Route path="/institutedashboard" element={<InstituteDashboard />} />
+      <Route path="/institutequeries" element={<InstituteQueries />} />
+      <Route path="/instituteprofile" element={<InstituteProfile />} />
+
+      <Route path="/admin" element={<AdminDashboard />} />
       </Routes>
       </BrowserRouter>
 

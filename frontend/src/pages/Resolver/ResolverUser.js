@@ -1,6 +1,4 @@
-import AdminSideBar from "./AdminSidebar";
-import NavBar from "../../components/Navbar";
-export default function AdminDashboard(){
+export default function ResolverUser(){
     return(
         <div>
             <div className="flex flex-row">
@@ -16,7 +14,6 @@ export default function AdminDashboard(){
 </div>
         </div>
     </div>
-</div>
-        
+        </div>
     )
 }

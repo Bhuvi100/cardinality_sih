@@ -1,16 +1,16 @@
 import { useState } from "react";
 import NavBar from "../../components/Navbar";
-import SideBar from "../../components/SideBar";
+import InstituteSideBar from "./InstituteSideBar";
 //import ViewQuery from "../../components/viewQueryForm";
-export default function MyQueries(){
+export default function InstituteQueries(){
     const [query,setQuery] = useState(0);
 
     return(
         <div>
             <div className="flex flex-row">
-<SideBar/>
+<InstituteSideBar/>
 <div class="w-full mb-6 lg:w-[100%] xl:w-[80%] 2xl:w-[85%] ml-16 md:ml-60">
-            <NavBar currentMenu="My Queries"/>
+            <NavBar currentMenu="Submitted Queries"/>
     <div>
 
     <div class="px-6 pt-6 2xl:container">

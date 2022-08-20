@@ -1,10 +1,11 @@
 import NavBar from "../../components/Navbar";
-import SideBar from "../../components/SideBar";
-export default function UserProfile(){
+import InstituteSideBar from "./InstituteSideBar";
+export default function InstituteProfile(){
     return(
         <div>
+            <div>
              <div className="flex flex-row">
-<SideBar/>
+<InstituteSideBar/>
 <div class="w-full mb-6 lg:w-[100%] xl:w-[80%] 2xl:w-[85%] ml-16 md:ml-60">
   <NavBar currentMenu="Profile"/>
    
@@ -104,6 +105,7 @@ export default function UserProfile(){
 </div>
 </div>
 </div> 
+        </div>
         </div>
     )
 }

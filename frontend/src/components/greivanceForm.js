@@ -1,6 +1,12 @@
+import { useState } from "react";
+import UserDashboard from "../pages/User/userDashboard";
 import NavBar from "./Navbar";
 import SideBar from "./SideBar";
 export default function GrievanceForm(){
+  const [back,setBack]=useState(0);
+  if(back==1){
+    return <UserDashboard/>
+  }
     return(
         <div>
             <div className="flex flex-row">
@@ -9,8 +15,14 @@ export default function GrievanceForm(){
 
             <NavBar currentMenu="New Grievance"/>
             
-    <div class="">
-       <div class="flex justify-center my-2 mx-4 md:mx-0">
+    <div class="grid grid-cols-6">
+      <div className="col-span-1">
+    <button class=" bg-transparent md:ml-3 md:mt-3 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+     onClick={()=>{setBack(1)}}>
+  Back
+</button>
+</div>
+       <div class="col-span-4 flex justify-center my-2 mx-4 md:mx-0">
    <form class="w-full max-w-xl bg-white rounded-lg shadow-xl p-6">
       <div class="flex flex-wrap -mx-3 mb-6">
          <div class="w-full md:w-full mt-3 px-3 mb-6">
