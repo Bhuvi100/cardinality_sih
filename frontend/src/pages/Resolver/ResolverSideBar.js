@@ -20,7 +20,7 @@ export default function ResolverSideBar(){
 
           <li class="min-w-max hover:bg-white">
             <div class="md:ml-2">
-            <Link to='/resolverdashboard' aria-label="dashboard" class="relative flex items-center space-x-4  px-4 py-3 text-white hover:text-black">
+            <Link to='/resolveruser' aria-label="dashboard" class="relative flex items-center space-x-4  px-4 py-3 text-white hover:text-black">
             <svg class="w-9 h-10 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg>
               <span class="-mr-1 font-medium text-lg md:block hidden">General User </span>
             </Link>
@@ -29,7 +29,7 @@ export default function ResolverSideBar(){
 
           <li class="min-w-max hover:bg-white">
             <div class="md:ml-2">
-            <Link to='/resolverdashboard' aria-label="dashboard" class="relative flex items-center space-x-4  px-4 py-3 text-white hover:text-black">
+            <Link to='/resolverSPOC' aria-label="dashboard" class="relative flex items-center space-x-4  px-4 py-3 text-white hover:text-black">
             <svg class="w-9 h-10 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg>
               <span class="-mr-1 font-medium text-lg md:block hidden">Institute SPOC </span>
             </Link>

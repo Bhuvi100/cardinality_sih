@@ -13,6 +13,8 @@ import InstituteQueries from './pages/Institute/instituteQueries';
 import InstituteProfile from './pages/Institute/InstituteProfile';
 import AdminDashboard from './pages/Admin/AdminDashboard';
 import ResolverDashboard from './pages/Resolver/ResolverDashboard';
+import ResolverSPOC from './pages/Resolver/ResolverSPOC';
+import ResolverUser from './pages/Resolver/ResolverUser';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 function App() {
   return (
@@ -33,6 +35,10 @@ function App() {
       <Route path="/institutedashboard" element={<InstituteDashboard />} />
       <Route path="/institutequeries" element={<InstituteQueries />} />
       <Route path="/instituteprofile" element={<InstituteProfile />} />
+
+      <Route path="/resolverdashboard" element={<ResolverDashboard />} />
+      <Route path="/resolverSPOC" element={<ResolverSPOC />} />
+      <Route path="/resolverUser" element={<ResolverUser />} />
 
       <Route path="/admin" element={<AdminDashboard />} />
       </Routes>
