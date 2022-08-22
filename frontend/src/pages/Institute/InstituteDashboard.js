@@ -1,7 +1,27 @@
 import InstituteSideBar from "./InstituteSideBar";
 import NavBar from "../../components/Navbar";
+import { useState } from "react";
+import InstituteReports from "./InstituteReports";
+import InstitutePGScholarship from "./InstitutePGScholarship";
+import InstituteBlock from "./InstituteBlock";
 export default function InstituteDashboard(){
+    const [report,setReport] = useState(0);
+    const [pg,setPg] = useState(0);
+    const [block,setBlock] = useState(0);
+    if(report==1)
+    {
+        return <InstituteReports/>
+    }
+    if(block==1)
+    {
+        return <InstituteBlock/>
+    }
+    if(pg==1)
+    {
+        return <InstitutePGScholarship/>
+    }
     return(
+        
         <div>
             <div className="flex flex-row">
             <InstituteSideBar/>
@@ -43,8 +63,8 @@ export default function InstituteDashboard(){
                 <p class="text-lg font-medium text-slate-700 mt-8">AICTE Quality Improvement Schemes</p>
             </div>
 
-
-            <div class="p-10 flex flex-col items-center text-center group md:lg:xl:border-r  md:lg:xl:border-b hover:bg-slate-50 cursor-pointer transition ease-in-out delay-150 hover:-translate-y-0.3 hover:scale-105 duration-300">
+            
+            <div class="p-10 flex flex-col items-center text-center group md:lg:xl:border-r  md:lg:xl:border-b hover:bg-slate-50 cursor-pointer transition ease-in-out delay-150 hover:-translate-y-0.3 hover:scale-105 duration-300" onClick={()=>{setPg(1)}}>
                 <span class="p-5 rounded-full bg-violet-700 text-white shadow-lg shadow-violet-600">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path d="M12 14l9-5-9-5-9 5 9 5z" />
@@ -54,6 +74,7 @@ export default function InstituteDashboard(){
                     </span>
                 <p class="text-lg font-medium text-slate-700 mt-8">PGDM Student Details </p>
             </div>
+            
 
             <div class="p-10 flex flex-col items-center text-center group  md:lg:xl:border-b  md:lg:xl:border-r hover:bg-slate-50 cursor-pointer transition ease-in-out delay-150 hover:-translate-y-0.3 hover:scale-105 duration-300">
                 <span class="p-5 rounded-full bg-yellow-400 text-white shadow-lg shadow-yellow-600">
@@ -99,7 +120,7 @@ export default function InstituteDashboard(){
                 <p class="text-lg font-medium text-slate-700 mt-8">NSQF</p>
             </div>
 
-            <div class="p-10 flex flex-col items-center text-center group    md:lg:xl:border-r hover:bg-slate-50 cursor-pointer transition ease-in-out delay-150 hover:-translate-y-0.3 hover:scale-105 duration-300">
+            <div class="p-10 flex flex-col items-center text-center group    md:lg:xl:border-r hover:bg-slate-50 cursor-pointer transition ease-in-out delay-150 hover:-translate-y-0.3 hover:scale-105 duration-300"  onClick={()=>{setBlock(1)}}>
                 <span class="p-5 rounded-full bg-pink-700 text-white shadow-lg shadow-pink-400">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -108,14 +129,16 @@ export default function InstituteDashboard(){
                 <p class="text-lg font-medium text-slate-700 mt-8">Block / Unblock Student</p>
             </div>
 
-            <div class="p-10 flex flex-col items-center text-center group   md:lg:xl:border-r  hover:bg-slate-50 cursor-pointer transition ease-in-out delay-150 hover:-translate-y-0.3 hover:scale-105 duration-300">
+            
+            <div class="p-10 flex flex-col items-center text-center group   md:lg:xl:border-r  hover:bg-slate-50 cursor-pointer transition ease-in-out delay-150 hover:-translate-y-0.3 hover:scale-105 duration-300" onClick={()=>{setReport(1)}}>
                 <span class="p-5 rounded-full bg-indigo-800 text-white shadow-lg shadow-indigo-600"><svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
 </svg></span>
-                <p class="text-lg font-medium text-slate-700 mt-8">Reports</p>
+                <p class="text-lg font-medium text-slate-700 mt-8">Reports</p>  
             </div>
-
-  <div class="p-10 flex flex-col items-center text-center group   md:lg:xl:border-b hover:bg-slate-50 cursor-pointer transition ease-in-out delay-150 hover:-translate-y-0.3 hover:scale-105 duration-300">
+        
+           
+        <div class="p-10 flex flex-col items-center text-center group   md:lg:xl:border-b hover:bg-slate-50 cursor-pointer transition ease-in-out delay-150 hover:-translate-y-0.3 hover:scale-105 duration-300" onClick={()=>{setPg(1)}}>
                 <span class="p-5 rounded-full bg-yellow-500 text-white shadow-lg shadow-yellow-200"><svg
                         xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor" stroke-width="1.5">
@@ -124,6 +147,7 @@ export default function InstituteDashboard(){
                     </svg></span>
                 <p class="text-lg font-medium text-slate-700 mt-8">PG Scholarship</p>
             </div>
+            
 
         </div>
 

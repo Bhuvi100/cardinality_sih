@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Login from './pages/login';
 import Register from './pages/register';
+import SPOCRegister from './pages/SPOCregister';
 import UserDashboard from './pages/User/userDashboard';
 import Temp from './pages/temp';
 import Landing from './pages/LandingPage';
@@ -11,6 +12,7 @@ import GrievanceForm from './components/greivanceForm';
 import InstituteDashboard from './pages/Institute/InstituteDashboard';
 import InstituteQueries from './pages/Institute/instituteQueries';
 import InstituteProfile from './pages/Institute/InstituteProfile';
+
 import AdminDashboard from './pages/Admin/AdminDashboard';
 import ResolverDashboard from './pages/Resolver/ResolverDashboard';
 import ResolverSPOC from './pages/Resolver/ResolverSPOC';
@@ -24,6 +26,7 @@ function App() {
       <Route path="/landing" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/SPOCregister" element={<SPOCRegister />} />
 
       <Route path="/resolverdashboard" element={<ResolverDashboard />} />
 
@@ -35,6 +38,7 @@ function App() {
       <Route path="/institutedashboard" element={<InstituteDashboard />} />
       <Route path="/institutequeries" element={<InstituteQueries />} />
       <Route path="/instituteprofile" element={<InstituteProfile />} />
+      
 
       <Route path="/resolverdashboard" element={<ResolverDashboard />} />
       <Route path="/resolverSPOC" element={<ResolverSPOC />} />

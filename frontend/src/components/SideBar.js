@@ -1,15 +1,14 @@
 import { Link } from 'react-router-dom';
+import logo2 from "../assets/logo2.png"
 export default function SideBar(){
     return(
         
 <div class="fixed top-0 bottom-0 z-10 h-screen bg-blue-500 overflow-hidden ">
   <div class="sidebar border-r border-blue-500 md:w-60 w-16 ">
-    <div class="flex flex-col justify-between pt-2 overflow-hidden">
-      <div className='mt-6'>
-        {/* <div class="w-max p-3">
-        <div> </div>
-        </div> */}
-        <ul class="mt-8 space-y-2 tracking-wide">
+    <div class="flex flex-col justify-between overflow-hidden">
+      <div className=''>
+      <img class="md:w-44 md:mr-3" src={logo2} />
+        <ul class="space-y-2 tracking-wide">
         {/* <li class="min-w-max hover:bg-white md:hidden">
         <button class="relative flex items-center space-x-4  px-4 py-3">
         <svg class="w-9 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
