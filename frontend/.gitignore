@@ -11,6 +11,9 @@
 # production
 /build
 
+android/
+capacitor/
+
 # misc
 .DS_Store
 .env.local

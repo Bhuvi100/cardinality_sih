@@ -1,0 +1,7 @@
+{
+  "name": "cardinality",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

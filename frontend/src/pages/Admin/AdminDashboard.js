@@ -1,6 +1,9 @@
 import AdminSideBar from "./AdminSidebar";
 import NavBar from "../../components/Navbar";
+import ChartLine from "../../components/ChartLine";
 export default function AdminDashboard(){
+
+    
     return(
         <div>
             <div className="flex flex-row">
@@ -9,10 +12,8 @@ export default function AdminDashboard(){
     <NavBar currentMenu="Admin Dashboard"/>
     <div class="px-6 pt-6 2xl:container">
        
-
-
-
-
+    <ChartLine/>
+          
 </div>
         </div>
     </div>

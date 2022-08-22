@@ -14,7 +14,7 @@ export default function Landing(){
     <nav id="header" class="fixed w-full z-30 top-0 text-white">
       <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-3">
         <div class="pl-4 flex flex-row items-center">
-        <img class="md:w-16 md:mr-3" src={logo} />
+        <img class="w-8 mr-2 md:w-16 md:mr-3" src={logo} />
           <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
             Shikaayat Samarthan
           </a>

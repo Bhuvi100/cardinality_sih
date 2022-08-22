@@ -23,7 +23,7 @@ function App() {
       <BrowserRouter>
       <Routes>
       <Route path="/temp" element={<Temp />} />
-      <Route path="/landing" element={<Landing />} />
+      <Route exact path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/SPOCregister" element={<SPOCRegister />} />

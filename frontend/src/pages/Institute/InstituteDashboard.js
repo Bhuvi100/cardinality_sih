@@ -4,10 +4,12 @@ import { useState } from "react";
 import InstituteReports from "./InstituteReports";
 import InstitutePGScholarship from "./InstitutePGScholarship";
 import InstituteBlock from "./InstituteBlock";
+import InstituteAQIS from "./InstituteAQIS";
 export default function InstituteDashboard(){
     const [report,setReport] = useState(0);
     const [pg,setPg] = useState(0);
     const [block,setBlock] = useState(0);
+    const [aqis,setAqis] = useState(0);
     if(report==1)
     {
         return <InstituteReports/>
@@ -15,6 +17,10 @@ export default function InstituteDashboard(){
     if(block==1)
     {
         return <InstituteBlock/>
+    }
+    if(aqis==1)
+    {
+        return <InstituteAQIS/>
     }
     if(pg==1)
     {
@@ -53,7 +59,7 @@ export default function InstituteDashboard(){
                 <p class="text-lg font-medium text-slate-700 mt-8">Institute Accounts / JFDR</p>
             </div>
 
-            <div class="p-10 flex flex-col items-center text-center group md:lg:xl:border-r  md:lg:xl:border-b hover:bg-slate-50 cursor-pointer transition ease-in-out delay-150 hover:-translate-y-0.3 hover:scale-105 duration-300">
+            <div class="p-10 flex flex-col items-center text-center group md:lg:xl:border-r  md:lg:xl:border-b hover:bg-slate-50 cursor-pointer transition ease-in-out delay-150 hover:-translate-y-0.3 hover:scale-105 duration-300" onClick={()=>{setAqis(1)}}>
                 <span class="p-5 rounded-full bg-pink-700 text-white shadow-lg shadow-pink-400">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
