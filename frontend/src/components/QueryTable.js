@@ -1,4 +1,4 @@
-export default function ModuleTable(props){
+export default function QueryTable(props){
     return(
         <div>
             <button class="px-3 py-1 mb-3 text-blue-600 font-semibold hover:bg-blue-500 hover:text-white bg-white border-2 border-blue-500 rounded-xl" onClick={() => props.setModtable(0)}>Back</button>
@@ -13,10 +13,10 @@ export default function ModuleTable(props){
                     Category
                   </th>
                   <th scope="col" class="px-5 py-5">
-                    Scheme / Module Name
+                  Query Type
                   </th>
                   <th scope="col" class="px-5 py-5">
-                    Raised On
+                  Resolver
                   </th>
                   <th scope="col" class="px-5 py-5 ">
                     Query Status
@@ -35,8 +35,8 @@ export default function ModuleTable(props){
                     INTR20220817091123444
                   </th>
                   <td class="px-5 py-4">Internship</td>
-                  <td class="px-5 py-4 ">AICTE Internship</td>
-                  <td class="px-5 py-4">17-08-2022</td>
+                  <td class="px-5 py-4 ">Suggestion</td>
+                  <td class="px-5 py-4">Kumaraguru</td>
                   <td class="flex flex-row px-5 py-4 mt-3 text-green-600 font-semibold">
                     Resolved
                     <svg
@@ -76,16 +76,114 @@ export default function ModuleTable(props){
                     </button>
                   </td>
                 </tr>
-                <tr class=" text-lg  font-normal  text-[#273339] dark:border-gray-800 bg-white bg-opacity-50">
+                <tr class=" text-lg  font-normal  text-[#273339] dark:border-gray-800 bg-white bg-opacity-60">
                   <th
                     scope="row"
                     class="px-6 py-4 font-semibold  whitespace-nowrap "
                   >
-                    INTR20220817091123444
+                    INTR20220817091123445
+                  </th>
+                  <td class="px-5 py-4">Scholarship</td>
+                  <td class="px-5 py-4 ">Grievance</td>
+                  <td class="px-5 py-4">Aswathy</td>
+                  <td class="flex flex-row px-5 py-4 mt-3 text-green-600 font-semibold">
+                    Resolved
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5 mt-1 ml-2"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </td>
+                  <td class="px-5 py-4">
+                    <button
+                      class="flex flex-row bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border-2 border-blue-500 hover:border-transparent rounded"
+                      onClick={() => {
+                        // setQuery(1);
+                      }}
+                    >
+                      View
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5 mt-1 ml-2"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                        <path
+                          fill-rule="evenodd"
+                          d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+                <tr class=" text-lg  font-normal  text-[#273339] dark:border-gray-800 bg-white bg-opacity-60">
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-semibold  whitespace-nowrap "
+                  >
+                    INTR20220817091123446
                   </th>
                   <td class="px-5 py-4">Internship</td>
-                  <td class="px-5 py-4 ">AICTE Internship</td>
-                  <td class="px-5 py-4">17-08-2022</td>
+                  <td class="px-5 py-4 ">Suggestion</td>
+                  <td class="px-5 py-4">Shametha</td>
+                  <td class="flex flex-row px-5 py-4 mt-3 text-green-600 font-semibold">
+                    Resolved
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5 mt-1 ml-2"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </td>
+                  <td class="px-5 py-4">
+                    <button
+                      class="flex flex-row bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border-2 border-blue-500 hover:border-transparent rounded"
+                      onClick={() => {
+                        // setQuery(1);
+                      }}
+                    >
+                      View
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5 mt-1 ml-2"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                        <path
+                          fill-rule="evenodd"
+                          d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+                <tr class=" text-lg  font-normal  text-[#273339] dark:border-gray-800 bg-white bg-opacity-60">
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-semibold  whitespace-nowrap "
+                  >
+                    INTR20220817091123447
+                  </th>
+                  <td class="px-5 py-4">Scholarship</td>
+                  <td class="px-5 py-4 ">Appreciation</td>
+                  <td class="px-5 py-4">Prithika</td>
                   <td class="flex flex-row px-5 py-4 mt-3 text-green-600 font-semibold">
                     Resolved
                     <svg

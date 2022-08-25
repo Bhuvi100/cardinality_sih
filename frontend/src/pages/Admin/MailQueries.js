@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import SocialTable from "../../components/SocialTable";
+import MailTable from "../../components/MailTable";
 import NavBar from "../../components/Navbar";
 
-export default function SocialQueries() {
+export default function MailQueries() {
   const [query, setQuery] = useState(0);
   const [modtable, setModtable] = useState(0);
 
@@ -34,7 +34,7 @@ export default function SocialQueries() {
                 </div>
               </div>
               </button>
-          </div> : <SocialTable setModtable={setModtable}/>}
+          </div> : <MailTable setModtable={setModtable}/>}
         </div>
         <div className="w-1/4">
           <details open class="overflow-hidden border border-gray-200 rounded">
@@ -77,20 +77,20 @@ export default function SocialQueries() {
                     </label>
                   </div>
 
-                  
-
                   <div class="flex items-center">
                     <input
-                      id="outdoor"
+                      id="game"
                       type="checkbox"
-                      name="type[outdoor]"
+                      name="type[game]"
                       class="w-5 h-5 border-gray-300 rounded"
                     />
 
-                    <label for="outdoor" class="ml-3 text-sm font-medium">
+                    <label for="game" class="ml-3 text-sm font-medium">
                       Resolved
                     </label>
                   </div>
+
+                 
 
                   <div class="pt-2">
                     <button
