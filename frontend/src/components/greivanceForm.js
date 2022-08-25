@@ -1,5 +1,5 @@
 import { useState } from "react";
-import UserDashboard from "../pages/User/userDashboard";
+import UserDashboard from "../pages/User/UserDashboard";
 import NavBar from "./Navbar";
 import SideBar from "./SideBar";
 export default function GrievanceForm(){
