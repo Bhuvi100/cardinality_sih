@@ -1,5 +1,5 @@
 import LoginPicNew from "../assets/LoginPicNew1.png";
-import UserDashboard from "./User/UserDashboard";
+import UserDashboard from "./User/userDashboard";
 import { useState } from "react";
 export default function Login(){
     const [login, setLogin]=useState(0);

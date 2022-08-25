@@ -25,7 +25,10 @@
 	animation: float 6s ease-in-out infinite;
 }
 
-.dropdown:focus .dropdown-menu {
+.dropdown:active .dropdown-menu {
 	display: block;
   }
 
+  .dropdown:hover .dropdown-menu {
+	display: block;
+  }

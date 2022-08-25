@@ -3,7 +3,7 @@ import "./App.css";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import SPOCRegister from "./pages/SPOCregister";
-import UserDashboard from "./pages/User/UserDashboard";
+import UserDashboard from "./pages/User/userDashboard";
 import Temp from "./pages/temp";
 import Landing from "./pages/LandingPage";
 import UserProfile from "./pages/User/Profile";
