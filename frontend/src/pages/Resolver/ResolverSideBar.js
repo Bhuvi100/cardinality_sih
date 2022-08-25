@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
+import logo2 from "../../assets/logo2.png";
 export default function ResolverSideBar(){
     return(
         
 <div class="fixed top-0 bottom-0 z-10 h-screen bg-blue-500 overflow-hidden ">
   <div class="sidebar border-r border-blue-500 md:w-60 w-16 ">
-    <div class="flex flex-col justify-between pt-2 overflow-hidden">
-      <div className='mt-6'>
+    <div class="flex flex-col justify-between overflow-hidden">
       
-        <ul class="mt-8 space-y-2 tracking-wide">
+      <img class="w-30 md:w-40 ml-3 md:mr-3" src={logo2} />
+        <ul class="space-y-2 tracking-wide">
        
           <li class="min-w-max hover:bg-white">
             <div class="md:ml-2">
@@ -68,6 +69,6 @@ export default function ResolverSideBar(){
       <div></div>
     </div>
   </div>
-</div>
+
     )
 }
