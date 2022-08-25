@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import ResolverHome from "./ResolverHome";
+import ResolverProfile from "./ResolverProfile";
+import ResolverQueries from "./ResolverQueries";
+import ResolverSocialQueries from "./ResolverSocialQueries";
 
 export default function ResolverDashboard() {
   const [menu, setMenu] = useState(1);
@@ -146,7 +150,12 @@ export default function ResolverDashboard() {
             </form>
           </div>
         </div>
-        <div className="w-full h-screen ml-16 md:ml-80"></div>
+        <div className="w-full h-screen ml-16 md:ml-80">
+          {menu == 1 && <ResolverHome />}
+          {menu == 2 && <ResolverQueries />}
+          {menu == 3 && <ResolverSocialQueries />}
+          {menu == 4 && <ResolverProfile />}
+        </div>
       </div>
     </div>
   );

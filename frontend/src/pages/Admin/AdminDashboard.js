@@ -1,4 +1,10 @@
 import React, { useState } from "react";
+import AdminHome from "./AdminHome";
+import AdminModules from "./AdminModules";
+import AdminQueries from "./AdminQueries";
+import AdminResolvers from "./AdminResolvers";
+import AdminUsers from "./AdminUsers";
+import SocialQueries from "./SocialQueries";
 
 export default function AdminDashboard() {
   const [menu, setMenu] = useState(1);
@@ -194,7 +200,14 @@ export default function AdminDashboard() {
             </form>
           </div>
         </div>
-        <div className="w-full h-screen ml-16 md:ml-80"></div>
+        <div className="w-full h-screen ml-16 md:ml-80">
+          {menu == 1 && <AdminHome />}
+          {menu == 2 && <AdminUsers />}
+          {menu == 3 && <AdminQueries />}
+          {menu == 4 && <SocialQueries />}
+          {menu == 5 && <AdminModules />}
+          {menu == 6 && <AdminResolvers />}
+        </div>
       </div>
     </div>
   );
