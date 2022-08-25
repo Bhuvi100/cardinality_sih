@@ -7,7 +7,7 @@ export default function SideBar(){
   <div class="sidebar border-r border-blue-500 md:w-60 w-16 ">
     <div class="flex flex-col justify-between overflow-hidden">
       <div className=''>
-      <img class="md:w-44 md:mr-3" src={logo2} />
+      <img class="w-30 md:w-44 md:mr-3" src={logo2} />
         <ul class="space-y-2 tracking-wide">
         {/* <li class="min-w-max hover:bg-white md:hidden">
         <button class="relative flex items-center space-x-4  px-4 py-3">

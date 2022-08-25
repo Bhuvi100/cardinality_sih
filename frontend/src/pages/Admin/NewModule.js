@@ -85,6 +85,7 @@ export default function NewModule() {
 
   const [fields, setFields] = useState({});
 
+  const [newField, setNewField] = useState("text")
   const [options, setOptions] = useState({
     radio: [],
     checkbox: [],
@@ -154,21 +155,25 @@ export default function NewModule() {
   function renderField(field, id) {
     return (
       <div key={id} className="mb-4">
-        <h4>
+        <div className="text-2xl text-center text-blue-500 capitalize font-bold">
           {field} Field - {id}
-        </h4>
-        <button onClick={() => removeField(field, id)} type={"button"}>
+        </div>
+        <div className="flex justify-end md:mr-3">
+        <button className="md:mt-3 md:mr-3 bg-blue-500 text-white font-semibold text-lg px-4 py-2 rounded-xl" onClick={() => removeField(field, id)} type={"button"}>
           Remove Field
         </button>
+        </div>
+        <div className="flex justify-center">
+        <div className="grid grid-cols-2 gap-3 p-6 w-4/5 justify-center bg-stone-100 rounded-xl mb-2 mt-4">
         <div className="w-full md:w-full px-3 mb-2">
           <label
-            className="block mb-1 text-sm font-bold text-black"
+            className="block mb-1 text-lg font-semibold text-black"
             htmlFor={`${field}-${id}-name`}
           >
-            Enter name of the field:
+            Enter Name of Field:
           </label>
           <input
-            className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 focus:ring-blue-500 focus:border-blue-500 leading-tight focus:outline-none"
+            className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2  rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-2 focus:border-blue-500 leading-tight focus:outline-none"
             type="text"
             required
             name={`${field}-${id}-name`}
@@ -177,13 +182,13 @@ export default function NewModule() {
         </div>
         <div className="w-full md:w-full px-3 mb-2">
           <label
-            className="block mb-1 text-sm font-bold text-black"
+            className="block mb-1 text-lg font-semibold text-black"
             htmlFor={`${field}-${id}-label`}
           >
-            Enter label for the field:
+            Enter Label for Field:
           </label>
           <input
-            className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 focus:ring-blue-500 focus:border-blue-500 leading-tight focus:outline-none"
+            className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-2 focus:border-blue-500 leading-tight focus:outline-none"
             type="text"
             required
             name={`${field}-${id}-label`}
@@ -192,13 +197,13 @@ export default function NewModule() {
         </div>
         <div className="w-full md:w-full px-3 mb-2">
           <label
-            className="block mb-1 text-sm font-bold text-black"
+            className="block mb-1 text-lg font-semibold text-black"
             htmlFor={`${field}-${id}-default`}
           >
-            Enter default value of the field:
+            Enter Default Value of Field:
           </label>
           <input
-            className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 focus:ring-blue-500 focus:border-blue-500 leading-tight focus:outline-none"
+            className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-2 focus:border-blue-500 leading-tight focus:outline-none"
             type="text"
             name={`${field}-${id}-default`}
             id={`${field}-${id}-default`}
@@ -206,29 +211,32 @@ export default function NewModule() {
         </div>
         <div className="w-full md:w-full px-3 mb-2">
           <label
-            className="block mb-1 text-sm font-bold text-black"
+            className="block mb-1 text-lg font-semibold text-black"
             htmlFor={`${field}-${id}-red`}
           >
-            Enter Red text of the field:
+            Enter Red Text of Field:
           </label>
           <input
-            className="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 focus:ring-blue-500 focus:border-blue-500 leading-tight focus:outline-none"
+            className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-2 focus:border-blue-500 leading-tight focus:outline-none"
             type="text"
             name={`${field}-${id}-red`}
             id={`${field}-${id}-red`}
           />
         </div>
+        </div>
+        </div>
         <br />
         {["checkbox", "radio", "select"].indexOf(field) !== -1 && (
           <div>
-            <h5>Options</h5>
-            <button type={"button"} onClick={() => addNewOption(field, id)}>
+            <div className="text-2xl text-center text-blue-500 capitalize font-bold">Options</div>
+            <button type={"button"} className="md:mt-3 md:mr-3 bg-blue-500 text-white font-semibold text-lg px-4 py-2 rounded-xl" onClick={() => addNewOption(field, id)}>
               Add new option
             </button>
             {options[field][id].map((option_id) => (
               <div key={option_id}>
                 {options[field][id].length > 1 && (
                   <button
+                  className="md:mt-3 md:mr-3 bg-blue-500 text-white font-semibold text-lg px-4 py-2 rounded-xl"
                     type={"button"}
                     onClick={() => removeOption(field, id, option_id)}
                   >
@@ -537,46 +545,48 @@ export default function NewModule() {
 
   return (
     <div>
-      <div className="flex flex-row">
+      <div className="">
         <AdminSideBar />
         <div class="w-full mb-6 lg:w-[100%] xl:w-[80%] 2xl:w-[85%] ml-16 md:ml-60">
           <NavBar currentMenu="Admin Dashboard" />
-          <div class="px-6 pt-6 2xl:container">
-            <button onClick={() => addNewField("text")}>
-              Add new Text Field
-            </button>
-            <br />
-            <button onClick={() => addNewField("numeric")}>
-              Add new Numeric Field
-            </button>
-            <br />
-            <button onClick={() => addNewField("textarea")}>
-              Add new Textarea Field
-            </button>
-            <br />
-            <button onClick={() => addNewField("radio")}>
-              Add new Radio Field
-            </button>
-            <br />
-            <button onClick={() => addNewField("checkbox")}>
-              Add new Checkbox Field
-            </button>
-            <br />
-            <button onClick={() => addNewField("select")}>
-              Add new Select Field
-            </button>
-            <br />
-            <button onClick={() => addNewField("file")}>
-              Add new File Field
-            </button>
-            <br />
-            <button onClick={() => setUseCustomClasses(!useCustomClasses)}>
+          <div class="grid grid-cols-2 px-6 pt-6 2xl:container ">
+          <div class="dropdown inline-block relative">
+  
+  <select onChange={(e) => setNewField(e.target.value)} class=" bg-gray-200 focus:border-1 text-blue-600 font-semibold text-lg px-4 py-2 rounded-xl">
+    <option value="text" class="pt-1"> 
+              Text Field
+            </option>
+    <option value="numeric" class="pt-1 rounded-xl border-0">
+              Numeric Field
+           </option>
+           <option value="textarea" class="pt-1 rounded-xl border-0">
+              Textarea Field
+           </option>
+           <option value="radio" class="pt-1 rounded-xl border-0">
+              Radio Field
+           </option>
+           <option value="checkbox" class="pt-1">
+              CheckBox Field
+           </option>
+           <option value="select" class="pt-1">
+              Select Field
+           </option>
+           <option value="file" class="pt-1">
+              File Field
+           </option>
+  </select>
+  <button className="ml-3 hover:bg-blue-500 hover:text-white bg-white text-blue-500 border-blue-500 border-2 font-semibold text-lg px-4 py-2 rounded-xl" onClick={() => addNewField(newField)}>Add Field</button>
+</div>
+         <div className="flex justify-end gap-2">
+            <button className=" hover:bg-blue-500 hover:text-white bg-white text-blue-500 border-blue-500 border-2 font-semibold text-lg px-4 py-2 rounded-xl" onClick={() => setUseCustomClasses(!useCustomClasses)}>
               Toggle Custom Classes
             </button>
-            <br />
-            <button onClick={() => setUseCustomCSS(!useCustomCSS)}>
+          
+            <button className=" hover:bg-blue-500 hover:text-white bg-white text-blue-500 border-blue-500 border-2 font-semibold text-lg px-4 py-2 rounded-xl" onClick={() => setUseCustomCSS(!useCustomCSS)}>
               Toggle Custom CSS
             </button>
+            </div>
+            </div>
             <br />
             <br />
             <form>
@@ -584,9 +594,12 @@ export default function NewModule() {
                 renderField(field, id)
               )}
             </form>
-          </div>
+          
         </div>
       </div>
     </div>
   );
 }
+
+
+
