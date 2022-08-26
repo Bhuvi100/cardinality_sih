@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\DynamicFormHelperTrait;
 
 class Module extends Model
 {
+    use DynamicFormHelperTrait;
+
     protected $table = 'modules';
 
     protected $primaryKey = 'id';

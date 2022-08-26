@@ -1,40 +1,60 @@
 import React, { useState } from "react";
 import SocialTable from "../../components/SocialTable";
 import NavBar from "../../components/Navbar";
+import {useEffect} from "react";
+import axios from "../../utils/axios";
+import Loading from "../../components/Loading";
 
 export default function SocialQueries() {
   const [query, setQuery] = useState(0);
   const [modtable, setModtable] = useState(0);
+  const [queries, setQueries] = useState([])
+
+
+  useEffect(() => {
+    axios
+        .post("http://127.0.0.1:8082/tweet", {
+          keyword: "smart india hackathon",
+          count: 8,
+        })
+        .then((res) => {
+          setQueries(res.data)
+        });
+  }, []);
+
+  if (queries.length === 0) {
+    return <Loading></Loading>
+  }
 
   return (
     <div>
+
       <NavBar currentMenu="Social Queries" />
 
       <div className="flex justify-between mr-4">
         <div class="px-6 pt-6 2xl:container w-3/4">
-          {modtable === 0 ? <div className="flex space-x-4 mt-4">
-            <button onClick={()=>setModtable(1)}>
-              <div
-                class="block overflow-hidden rounded-2xl w-80 shadow-xl"
-              >
-                <img
-                  class="object-cover w-full h-32"
-                  src="https://www.freshersnow.com/wp-content/uploads/2019/12/AICTE-PG-Scholarship.png"
-                  alt=""
-                />
+          {modtable === 0 ? (
+            <div className="flex space-x-4 mt-4">
+              <button onClick={() => setModtable(1)}>
+                <div class="block overflow-hidden rounded-2xl w-80 shadow-xl">
+                  <img
+                    class="object-cover w-full h-32"
+                    src="https://www.freshersnow.com/wp-content/uploads/2019/12/AICTE-PG-Scholarship.png"
+                    alt=""
+                  />
 
-                <div class="p-4 bg-white border-white">
-                  <h5 class="text-sm title text-[#273339]">
-                    AICTE Scholarships
-                  </h5>
+                  <div class="p-4 bg-white border-white">
+                    <h5 class="text-sm title text-[#273339]">
+                      AICTE Scholarships
+                    </h5>
 
-                  <p class="mt-1 text-xs text-gray-500 desc">
-                    Kaasu kudupana nu theriyathu aana kandipa kadupu kudupan
-                  </p>
+                    <p class="mt-1 text-xs text-gray-500 desc">
+                      Kaasu kudupana nu theriyathu aana kandipa kadupu kudupan
+                    </p>
+                  </div>
                 </div>
-              </div>
               </button>
-          </div> : <SocialTable setModtable={setModtable}/>}
+          </div>) : <SocialTable queries={queries} setModtable={setModtable}/>}
         </div>
         <div className="w-1/4">
           <details open class="overflow-hidden border border-gray-200 rounded">
@@ -76,8 +96,6 @@ export default function SocialQueries() {
                       Noted
                     </label>
                   </div>
-
-                  
 
                   <div class="flex items-center">
                     <input

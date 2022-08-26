@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import ResolverEmailQueries from "./ResolverEmailQueries";
-import ResolverHome from "./ResolverHome";
-import ResolverProfile from "./ResolverProfile";
-import ResolverQueries from "./ResolverQueries";
-import ResolverSocialQueries from "./ResolverSocialQueries";
+import Profile from "./Profile";
+import UserHome from "./userHome";
+import MyQueries from "./MyQueries";
+import RemoteAssistant from "./RemoteAssistant";
+import UserHomeHi from "./UserHomeHi";
 
-export default function ResolverDashboard() {
+export default function UserDashboardHi() {
   const [menu, setMenu] = useState(1);
   return (
     <div className="">
-      <div className="flex min-h-full w-full gradient-bg bg-[#dffaff] overflow-scroll">
+      <div className="flex min-h-full w-full gradient-bg overflow-scroll bg-[#dffaff]">
         <div class="flex fixed z-10 bottom-0 left-0 flex-col bg-white bg-opacity-60 justify-between w-16 md:w-1/5 h-screen  border-r">
           <div>
             <div className="flex justify-center">
@@ -20,7 +20,7 @@ export default function ResolverDashboard() {
             </div>
 
             <div class="">
-              <nav class="flex flex-col p-2">
+              <nav class="flex flex-col p-2 justify-between">
                 <ul class="pt-8 space-y-3">
                   <li>
                     <button
@@ -41,7 +41,7 @@ export default function ResolverDashboard() {
                         <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
                       </svg>
 
-                      <span class="text-xl  hidden md:block">Home</span>
+                      <span class="text-xl  hidden md:block">घर</span>
                     </button>
                   </li>
                   <li>
@@ -66,7 +66,7 @@ export default function ResolverDashboard() {
                         />
                       </svg>
 
-                      <span class="text-xl hidden md:block">Queries</span>
+                      <span class="text-xl hidden md:block">मेरे प्रश्न</span>
                     </button>
                   </li>
                   <li>
@@ -86,69 +86,44 @@ export default function ResolverDashboard() {
                       >
                         <path
                           fill-rule="evenodd"
-                          d="M8.25 6.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM15.75 9.75a3 3 0 116 0 3 3 0 01-6 0zM2.25 9.75a3 3 0 116 0 3 3 0 01-6 0zM6.31 15.117A6.745 6.745 0 0112 12a6.745 6.745 0 016.709 7.498.75.75 0 01-.372.568A12.696 12.696 0 0112 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 01-.372-.568 6.787 6.787 0 011.019-4.38z"
-                          clip-rule="evenodd"
-                        />
-                        <path d="M5.082 14.254a8.287 8.287 0 00-1.308 5.135 9.687 9.687 0 01-1.764-.44l-.115-.04a.563.563 0 01-.373-.487l-.01-.121a3.75 3.75 0 013.57-4.047zM20.226 19.389a8.287 8.287 0 00-1.308-5.135 3.75 3.75 0 013.57 4.047l-.01.121a.563.563 0 01-.373.486l-.115.04c-.567.2-1.156.349-1.764.441z" />
-                      </svg>
-
-                      <span class="text-xl hidden md:block">
-                        Twitter queries
-                      </span>
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      onClick={() => setMenu(5)}
-                      className={
-                        menu == 5
-                          ? "title text-white rounded bg-[#2368FB] flex space-x-4 px-2 py-1.5 w-full"
-                          : "desc w-full   flex space-x-4 px-2 py-1.5 text-gray-500 rounded hover:bg-gray-50 hover:text-gray-700 relative group"
-                      }
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        class="w-6 h-6 mt-1"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M8.25 6.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM15.75 9.75a3 3 0 116 0 3 3 0 01-6 0zM2.25 9.75a3 3 0 116 0 3 3 0 01-6 0zM6.31 15.117A6.745 6.745 0 0112 12a6.745 6.745 0 016.709 7.498.75.75 0 01-.372.568A12.696 12.696 0 0112 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 01-.372-.568 6.787 6.787 0 011.019-4.38z"
-                          clip-rule="evenodd"
-                        />
-                        <path d="M5.082 14.254a8.287 8.287 0 00-1.308 5.135 9.687 9.687 0 01-1.764-.44l-.115-.04a.563.563 0 01-.373-.487l-.01-.121a3.75 3.75 0 013.57-4.047zM20.226 19.389a8.287 8.287 0 00-1.308-5.135 3.75 3.75 0 013.57 4.047l-.01.121a.563.563 0 01-.373.486l-.115.04c-.567.2-1.156.349-1.764.441z" />
-                      </svg>
-
-                      <span class="text-xl hidden md:block">Email queries</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      onClick={() => setMenu(4)}
-                      className={
-                        menu == 4
-                          ? "title text-white rounded bg-[#2368FB] flex space-x-4 px-2 py-1.5 w-full"
-                          : "desc w-full   flex space-x-4 px-2 py-1.5 text-gray-500 rounded hover:bg-gray-50 hover:text-gray-700 relative group"
-                      }
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        class="w-6 h-6 mt-1"
-                      >
-                        <path
-                          fill-rule="evenodd"
                           d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
                           clip-rule="evenodd"
                         />
                       </svg>
 
-                      <span class="text-xl mt-1 hidden md:block">Profile</span>
+                      <span class="text-xl mt-1 hidden md:block">
+                        प्रोफ़ाइल
+                      </span>
                     </button>
                   </li>
                 </ul>
+                <li className="mt-64">
+                  <button
+                    onClick={() => setMenu(4)}
+                    className={
+                      menu == 4
+                        ? "title text-white rounded bg-[#2368FB] flex space-x-4 px-2 py-1.5 w-full"
+                        : "desc w-full   flex space-x-4 px-2 py-1.5 text-gray-500 rounded hover:bg-gray-50 hover:text-gray-700 relative group"
+                    }
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      class="w-6 h-6 mt-1"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M19.449 8.448L16.388 11a4.52 4.52 0 010 2.002l3.061 2.55a8.275 8.275 0 000-7.103zM15.552 19.45L13 16.388a4.52 4.52 0 01-2.002 0l-2.55 3.061a8.275 8.275 0 007.103 0zM4.55 15.552L7.612 13a4.52 4.52 0 010-2.002L4.551 8.45a8.275 8.275 0 000 7.103zM8.448 4.55L11 7.612a4.52 4.52 0 012.002 0l2.55-3.061a8.275 8.275 0 00-7.103 0zm8.657-.86a9.776 9.776 0 011.79 1.415 9.776 9.776 0 011.414 1.788 9.764 9.764 0 010 10.211 9.777 9.777 0 01-1.415 1.79 9.777 9.777 0 01-1.788 1.414 9.764 9.764 0 01-10.212 0 9.776 9.776 0 01-1.788-1.415 9.776 9.776 0 01-1.415-1.788 9.764 9.764 0 010-10.212 9.774 9.774 0 011.415-1.788A9.774 9.774 0 016.894 3.69a9.764 9.764 0 0110.211 0zM14.121 9.88a2.985 2.985 0 00-1.11-.704 3.015 3.015 0 00-2.022 0 2.985 2.985 0 00-1.11.704c-.326.325-.56.705-.704 1.11a3.015 3.015 0 000 2.022c.144.405.378.785.704 1.11.325.326.705.56 1.11.704.652.233 1.37.233 2.022 0a2.985 2.985 0 001.11-.704c.326-.325.56-.705.704-1.11a3.016 3.016 0 000-2.022 2.985 2.985 0 00-.704-1.11z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+
+                    <span class="text-xl mt-1 hidden md:block">
+                      दूरस्थ सहायता
+                    </span>
+                  </button>
+                </li>
               </nav>
             </div>
           </div>
@@ -178,11 +153,10 @@ export default function ResolverDashboard() {
           </div>
         </div>
         <div className="w-full h-screen ml-16 md:ml-80">
-          {menu == 1 && <ResolverHome />}
-          {menu == 2 && <ResolverQueries />}
-          {menu == 3 && <ResolverSocialQueries />}
-          {menu == 4 && <ResolverProfile />}
-          {menu == 5 && <ResolverEmailQueries />}
+          {menu == 1 && <UserHomeHi />}
+          {menu == 2 && <MyQueries />}
+          {menu == 3 && <Profile />}
+          {menu == 4 && <RemoteAssistant />}
         </div>
       </div>
     </div>
