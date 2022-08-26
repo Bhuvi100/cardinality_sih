@@ -9,7 +9,7 @@ export default function NavBar(props) {
         </h5>
         <div class="flex mt-3 md:mt-0">
         
-            <div class="dropdown inline-block relative ml-3">
+            <div class="dropdown inline-block relative ml-3 z-10">
     <button class="w-10 h-10 mr-1.5 rounded-xl border bg-[#2368FB] text-white hover:text-[#2368FB] hover:bg-white">
     <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -25,9 +25,9 @@ export default function NavBar(props) {
             </svg>
       </button>
     <ul class="dropdown-menu absolute hidden rounded-xl text-gray-900 bg-gray-200 pt-1 mr-10">
-      <li class="rounded-xl bg-gray-200 hover:bg-gray-400 py-2 px-10 text-left mr-10"><a href="#">Tamil</a></li>
-      <li class=""><a class="bg-gray-200 rounded-xl hover:bg-gray-400 py-2 px-10 block whitespace-no-wrap mr-10" href="#">Hindi</a></li>
-      <li class=""><a class="rounded-xl bg-gray-200 hover:bg-gray-400 py-2 px-10 block whitespace-no-wrap mr-10" href="#">Telugu</a></li>
+      <li class="rounded-xl font-semibold bg-gray-200 hover:bg-blue-500 hover:text-white  py-2 px-10 text-left mr-10"><a href="#">Tamil</a></li>
+      <li class=""><a class="bg-gray-200 font-semibold rounded-xl hover:bg-blue-500 hover:text-white py-2 px-10 block whitespace-no-wrap mr-10" href="#">Hindi</a></li>
+      <li class=""><a class="rounded-xl font-semibold bg-gray-200 hover:bg-blue-500 hover:text-white py-2 px-10 block whitespace-no-wrap mr-10" href="#">Telugu</a></li>
     </ul>
   </div>
 

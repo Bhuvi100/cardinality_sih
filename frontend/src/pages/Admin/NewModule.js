@@ -627,7 +627,7 @@ export default function NewModule() {
   return (
     <div>
       <div className="">
-        <div class="w-full mb-6 lg:w-[100%] xl:w-[80%] 2xl:w-[85%]">
+        <div class="w-full ml-4 mt-3 mb-6 lg:w-[100%] xl:w-[80%] 2xl:w-[85%]">
           <div className="w-full md:w-full px-3 mb-4">
             <label className="block mb-1 text-lg font-semibold text-black">
               Enter Name of the module:

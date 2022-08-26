@@ -13,7 +13,7 @@ export default function AdminModules() {
 
       { newModule ? <NewModule></NewModule> :
         <div>
-          <button onClick={() => setNewModule(true)}>Add New Module</button>
+          <button class="flex flex-row bg-white ml-6 hover:bg-blue-500 text-blue-700 font-bold mt-3 hover:text-white py-2 px-3 border-2 border-blue-500 hover:border-transparent rounded-xl" onClick={() => setNewModule(true)}>Add New Module</button>
           <div class="px-6 pt-6 2xl:container">
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-full">
               <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">

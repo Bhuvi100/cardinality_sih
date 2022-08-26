@@ -15,19 +15,19 @@ export default function AdminResolvers() {
               <thead class=" title text-gray-900 uppercase text-lg bg-[#E4EAEB]  dark:text-[#273339]">
                 <tr>
                   <th scope="col" class="px-5 py-5">
-                    Query ID
+                    Name
                   </th>
                   <th scope="col" class="px-5 py-5">
-                    Category
+                    Specialization
                   </th>
                   <th scope="col" class="px-5 py-5">
-                    Scheme / Module Name
+                    Assigned Module
                   </th>
                   <th scope="col" class="px-5 py-5">
-                    Raised On
+                    Resolved Count
                   </th>
                   <th scope="col" class="px-5 py-5 ">
-                    Query Status
+                    Registered Count
                   </th>
                   <th scope="col" class="px-5 py-5">
                     Details
@@ -40,26 +40,12 @@ export default function AdminResolvers() {
                     scope="row"
                     class="px-6 py-4 font-semibold  whitespace-nowrap "
                   >
-                    INTR20220817091123444
+                    Sandeep Patel
                   </th>
-                  <td class="px-5 py-4">Internship</td>
+                  <td class="px-5 py-4">Software Developer</td>
                   <td class="px-5 py-4 ">AICTE Internship</td>
-                  <td class="px-5 py-4">17-08-2022</td>
-                  <td class="flex flex-row px-5 py-4 mt-3 text-green-600 font-semibold">
-                    Resolved
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-5 w-5 mt-1 ml-2"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </td>
+                  <td class="px-5 py-4 text-center">3</td>
+                  <td class="px-5 py-4 text-center">5</td>
                   <td class="px-5 py-4">
                     <button
                       class="flex flex-row bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border-2 border-blue-500 hover:border-transparent rounded"
@@ -84,31 +70,17 @@ export default function AdminResolvers() {
                     </button>
                   </td>
                 </tr>
-                <tr class=" text-lg  font-normal  text-[#273339] dark:border-gray-800 bg-white bg-opacity-50">
+                <tr class=" text-lg  font-normal  text-[#273339] dark:border-gray-800 bg-white bg-opacity-60">
                   <th
                     scope="row"
                     class="px-6 py-4 font-semibold  whitespace-nowrap "
                   >
-                    INTR20220817091123444
+                    Shubham Agrawal
                   </th>
-                  <td class="px-5 py-4">Internship</td>
-                  <td class="px-5 py-4 ">AICTE Internship</td>
-                  <td class="px-5 py-4">17-08-2022</td>
-                  <td class="flex flex-row px-5 py-4 mt-3 text-green-600 font-semibold">
-                    Resolved
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-5 w-5 mt-1 ml-2"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </td>
+                  <td class="px-5 py-4">UI/UX Developer</td>
+                  <td class="px-5 py-4 ">PG Scholarship</td>
+                  <td class="px-5 py-4 text-center">2</td>
+                  <td class="px-5 py-4 text-center">4</td>
                   <td class="px-5 py-4">
                     <button
                       class="flex flex-row bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border-2 border-blue-500 hover:border-transparent rounded"

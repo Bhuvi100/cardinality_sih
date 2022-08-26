@@ -32,9 +32,9 @@ export default function UserHome() {
 
       {search == true ? (
         <div>
-          <div className="mt-8 pl-8">
-            <h1 className="text-xl title text-[#273339]">Suggested topics</h1>
-            <div className="flex space-x-4 mt-4">
+          <div className="mt-8 ml-2 md:pl-8">
+            <h1 className="text-xl title text-[#273339] mb-2">Suggested topics</h1>
+            <div className="flex md:space-x-4 md:mt-4">
               <a
                 href=""
                 class="block overflow-hidden rounded-2xl w-80 shadow-xl"

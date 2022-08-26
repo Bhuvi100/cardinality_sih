@@ -8,7 +8,7 @@ export default function MailQueries() {
 
   return (
     <div>
-      <NavBar currentMenu="Queries" />
+      <NavBar currentMenu="Mail Queries" />
 
       <div className="flex justify-between mr-4">
         <div class="px-6 pt-6 2xl:container w-3/4">
