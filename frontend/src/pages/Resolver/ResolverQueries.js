@@ -11,36 +11,9 @@ export default function ResolverQueries() {
       <NavBar currentMenu="Queries" />
       <div className="flex justify-between mr-4">
         <div class="px-6 pt-6 2xl:container w-3/4">
-          {modtable === 0 ? (
-            <div className="flex space-x-4 mt-4">
-              <button onClick={() => setModtable(1)}>
-                <div class="block overflow-hidden rounded-2xl w-80 shadow-xl">
-                  <img
-                    class="object-cover w-full h-32"
-                    src="https://www.freshersnow.com/wp-content/uploads/2019/12/AICTE-PG-Scholarship.png"
-                    alt=""
-                  />
-
-                  <div class="p-4 bg-white border-white">
-                    <h5 class="text-sm title text-[#273339]">
-                      AICTE Scholarships
-                    </h5>
-
-                    <p class="mt-1 text-xs text-gray-500 desc">
-                      Kaasu kudupana nu theriyathu aana kandipa kadupu kudupan
-                    </p>
-                  </div>
-                </div>
-              </button>
-            </div>
-          ) : (
+          
             <div>
-              <button
-                class="px-3 py-1 mb-3 text-blue-600 font-semibold hover:bg-blue-500 hover:text-white bg-white border-2 border-blue-500 rounded-xl"
-                onClick={() => setModtable(0)}
-              >
-                Back
-              </button>
+             
               <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-full">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
                   <thead class=" title text-gray-900 uppercase text-lg bg-[#E4EAEB]  dark:text-[#273339]">
@@ -266,7 +239,7 @@ export default function ResolverQueries() {
                 </table>
               </div>
             </div>
-          )}
+        
         </div>
         <div className="md:w-1/4">
           <details open class="overflow-hidden border border-gray-200 rounded">
