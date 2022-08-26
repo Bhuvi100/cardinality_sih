@@ -19,7 +19,9 @@ class ModulesController extends Controller
 
     public function store(Request $request)
     {
-        $req_fields = json_decode($request->fields);
+        $req_fields = json_decode($request->fields, true);
+        $req_options = json_decode($request->options, true);
+
         $fields = [];
         $rules = [];
         $css = [];
@@ -29,19 +31,26 @@ class ModulesController extends Controller
             $name = $request->get("field-${id}-name");
 
             $fields[$name] = [
-                "type" => "field-${id}-type",
-                'label' => "field-${id}-label",
-                'default' => "field-${id}-default",
-                'red_text' => "field-${id}-red"
+                "type" => $field,
+                'label' => $request->get("field-${id}-label"),
+                'default' => $request->get("field-${id}-default"),
+                'red_text' => $request->get("field-${id}-red_text")
             ];
 
+            if (in_array($field, ['select', 'checkbox', 'radio'])) {
+                foreach ($req_options[$field][$id] as $option_id) {
+                    $fields[$name]['options'][$option_id] = [
+                        'label' => $request->get("field-${id}-option-${option_id}-label"),
+                        'value' => $request->get("field-${id}-option-${option_id}-value"),
+                    ];
+                }
+            }
 
             $rules[$name] = [];
 
             foreach ($request->all() as $label => $input) {
                 if (str_contains($label, "field-${id}-rule-")) {
                     $rule = str_replace("field-${id}-rule-", '', $label);
-
                     switch ($rule) {
                         case "required":
                             $rules[$name]['required'] = (bool)$input;
@@ -75,13 +84,17 @@ class ModulesController extends Controller
                     $css[$name][$div] = $input == null ? null : $input;
                 }
             }
+
+            if (!$request->get('customClasses')) {
+                $classes[$name] = Module::getDefaultClasses($field);
+            }
         }
 
         $module = Module::create(
             [
                 'name' => $request->name,
                 'description' => $request->description,
-                'image' => $request->image,
+                'image' => $request->file('image')->store('modules', 'public'),
                 'fields' => $fields,
                 'rules' => $rules,
                 'css' => $css,

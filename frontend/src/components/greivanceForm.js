@@ -4,6 +4,7 @@ import NavBar from "./Navbar";
 import SideBar from "./SideBar";
 import axios from "../utils/axios";
 import Loading from "./Loading";
+import { Textarea } from "@material-tailwind/react";
 
 export default function GrievanceForm(props) {
   const [back, setBack] = useState(0);
@@ -11,7 +12,7 @@ export default function GrievanceForm(props) {
   const [currentModule, setCurrentModule] = useState(false);
 
   useState(() => {
-    axios.get("/modules/3").then((res) => {
+    axios.get("/modules/15").then((res) => {
       setCurrentModule(res.data.data);
     }); //TODO CHANGE MODULE ID TO PROPS.MODULE_ID
   }, []);
@@ -38,12 +39,14 @@ export default function GrievanceForm(props) {
   }
 
   function renderField(field, properties) {
+    console.log(field, properties);
     switch (properties.type) {
       case "text":
         return (
           <div
             className={currentModule.classes[field]?.outer_div ?? ""}
             style={cssToJson(currentModule.css[field]?.outer_div ?? "")}
+            key={field}
           >
             <label
               className={currentModule.classes[field]?.label ?? ""}
@@ -321,34 +324,84 @@ export default function GrievanceForm(props) {
 
   return (
     <div>
-      <div className="flex flex-row">
-        <SideBar />
-        <div class="w-full mb-6 lg:w-[100%] xl:w-[80%] 2xl:w-[85%] ml-16 md:ml-60">
-          <NavBar currentMenu="New Grievance" />
+      <NavBar currentMenu="New Grievance" />
 
-          <div class="grid grid-cols-6">
-            <div className="col-span-1">
-              <button
-                class="bg-transparent md:ml-3 md:mt-3 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-                onClick={() => {
-                  setBack(1);
-                }}
-              >
-                Back
-              </button>
+      <div class="grid grid-cols-6">
+        <div className="col-span-1">
+          <button
+            class="bg-transparent md:ml-3 md:mt-3 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+            onClick={() => {
+              setBack(1);
+            }}
+          >
+            Back
+          </button>
+        </div>
+        <div class="col-span-4 flex justify-center my-2 mx-4 md:mx-0">
+          <form class="w-full max-w-xl bg-white rounded-lg shadow-xl p-6">
+            <div class="flex flex-wrap -mx-3 mb-6">
+              {Object.entries(currentModule.fields).map(
+                ([field, properties]) => {
+                  return renderField(field, properties);
+                }
+              )}
+
+              <div className={"w-full md:w-full px-3 mb-3"}>
+                <label className={"block mb-1 text-sm font-bold text-black"}>
+                  Enter Subject:
+                  <span className="text-red-600">
+                    <sup>*</sup>
+                  </span>
+                </label>
+                <input
+                  className={
+                    "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 focus:ring-blue-500 focus:border-blue-500 leading-tight focus:outline-none"
+                  }
+                  type={"text"}
+                  required={true}
+                  name={"subject"}
+                />
+              </div>
+              <div className={"w-full md:w-full px-3 mb-3"}>
+                <label className={"block mb-1 text-sm font-bold text-black"}>
+                  Enter Description:
+                  <span className="text-red-600">
+                    <sup>*</sup>
+                  </span>
+                </label>
+                <Textarea
+                  className={
+                    "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 focus:ring-blue-500 focus:border-blue-500 leading-tight focus:outline-none"
+                  }
+                  required={true}
+                  name={"subject"}
+                  rows={4}
+                />
+              </div>
+              <h6>Disclaimer: </h6>
+              <div className="w-full flex items-center justify-between px-3 mb-2 ">
+                <label className="flex items-center">
+                  <input
+                    type="checkbox"
+                    required={true}
+                    className="mr-1 bg-white shadow"
+                  />
+                  <h4 className="text-sm font-bold text-red-700 pt-1">
+                    I certify that the information uploaded on this application
+                    is correct to the best of my Knowledge
+                  </h4>
+                </label>
+              </div>
+              <div className="w-full md:w-full px-3 mt-1 mb-1 flex items-center justify-center">
+                <button
+                  type="submit"
+                  className=" text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                >
+                  SUBMIT
+                </button>
+              </div>
             </div>
-            <div class="col-span-4 flex justify-center my-2 mx-4 md:mx-0">
-              <form class="w-full max-w-xl bg-white rounded-lg shadow-xl p-6">
-                <div class="flex flex-wrap -mx-3 mb-6">
-                  {Object.entries(
-                    currentModule.fields
-                  ).map(([field, properties]) =>
-                    renderField(field, properties)
-                  )}
-                </div>
-              </form>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>

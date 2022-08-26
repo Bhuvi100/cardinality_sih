@@ -220,15 +220,15 @@ export default function NewModule() {
             <div className="w-full md:w-full px-3 mb-2">
               <label
                 className="block mb-1 text-lg font-semibold text-black"
-                htmlFor={`field-${id}-red`}
+                htmlFor={`field-${id}-red_text`}
               >
                 Enter Red Text of Field:
               </label>
               <input
                 className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-2 focus:border-blue-500 leading-tight focus:outline-none"
                 type="text"
-                name={`field-${id}-red`}
-                id={`field-${id}-red`}
+                name={`field-${id}-red_text`}
+                id={`field-${id}-red_text`}
               />
             </div>
           </div>
@@ -589,6 +589,8 @@ export default function NewModule() {
     let data = new FormData(e.target);
     data.append("fields", JSON.stringify(fields));
     data.append("options", JSON.stringify(options));
+    data.append("customClasses", useCustomClasses === true ? 1 : 0);
+    data.append("customCss", useCustomCSS === true ? 1 : 0);
 
     toast.promise(axios.post("/modules", data), {
       pending: {
@@ -727,8 +729,8 @@ export default function NewModule() {
                 </option>
               </select>
               <button
-                  type={"button"}
-                  className="ml-3 hover:bg-blue-500 hover:text-white bg-white text-blue-500 border-blue-500 border-2 font-semibold text-lg px-4 py-2 rounded-xl"
+                type={"button"}
+                className="ml-3 hover:bg-blue-500 hover:text-white bg-white text-blue-500 border-blue-500 border-2 font-semibold text-lg px-4 py-2 rounded-xl"
                 onClick={() => addNewField(newField)}
               >
                 Add Field
@@ -736,8 +738,8 @@ export default function NewModule() {
             </div>
             <div className="flex justify-end gap-2">
               <button
-                  type={"button"}
-                  className={
+                type={"button"}
+                className={
                   useCustomClasses == false
                     ? "  bg-white text-blue-500 border-white border-2 font-semibold text-lg px-4 py-2 rounded-xl"
                     : " bg-blue-500 text-white border-blue-500 border-2 font-semibold text-lg px-4 py-2 rounded-xl"
