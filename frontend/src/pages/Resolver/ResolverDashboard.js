@@ -4,6 +4,7 @@ import ResolverHome from "./ResolverHome";
 import ResolverProfile from "./ResolverProfile";
 import ResolverQueries from "./ResolverQueries";
 import ResolverSocialQueries from "./ResolverSocialQueries";
+import logo from "../../assets/logoo.png";
 
 export default function ResolverDashboard() {
   const [menu, setMenu] = useState(1);
@@ -15,7 +16,7 @@ export default function ResolverDashboard() {
             <div className="flex justify-center">
               <img
                 class=" w-14 h-14 mt-4 md:w-32 md:h-32 rounded-lg"
-                src="logo.png"
+                src={logo}
               ></img>
             </div>
 

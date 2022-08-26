@@ -6,6 +6,7 @@ import AdminResolvers from "./AdminResolvers";
 import AdminUsers from "./AdminUsers";
 import MailQueries from "./MailQueries";
 import SocialQueries from "./SocialQueries";
+import logo from "../../assets/logoo.png";
 
 export default function AdminDashboard() {
   const [menu, setMenu] = useState(1);
@@ -17,7 +18,7 @@ export default function AdminDashboard() {
             <div className="flex justify-center">
               <img
                 class=" w-14 h-14 mt-4 md:w-32 md:h-32 rounded-lg"
-                src="logo.png"
+                src={logo}
               ></img>
             </div>
 
