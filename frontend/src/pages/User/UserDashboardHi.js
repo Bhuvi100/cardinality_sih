@@ -4,6 +4,7 @@ import UserHome from "./userHome";
 import MyQueries from "./MyQueries";
 import RemoteAssistant from "./RemoteAssistant";
 import UserHomeHi from "./UserHomeHi";
+import logo from "../../assets/logoo.png";
 
 export default function UserDashboardHi() {
   const [menu, setMenu] = useState(1);
@@ -15,7 +16,7 @@ export default function UserDashboardHi() {
             <div className="flex justify-center">
               <img
                 class=" w-14 h-14 mt-4 md:w-32 md:h-32 rounded-lg"
-                src="logo.png"
+                src={logo}
               ></img>
             </div>
 
