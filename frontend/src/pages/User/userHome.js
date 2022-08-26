@@ -126,7 +126,7 @@ export default function UserHome() {
             <h1 className="text-xl title text-[#273339]">
               Suggested Categories
             </h1>
-            <div className="grid grid-cols-3">{modules.map((m, index) => <div key={index} className=" mt-4">
+            <div className="grid grid-cols-1 md:grid-cols-3">{modules.map((m, index) => <div key={index} className=" mt-4">
               <div
                   className="block overflow-hidden rounded-2xl w-80 shadow-xl"
                   onClick={() => setIsSelected(m.id)}

@@ -13,7 +13,7 @@ export default function RemoteAssistant() {
               Schedule remote assistance
             </h1>
             <p className="text-center text-gray-600 mb-6">
-              Enter your prefered date and time
+              Enter your preferred date and time
             </p>
             <div className="flex justify-center mt-4">
               <input
@@ -28,7 +28,7 @@ export default function RemoteAssistant() {
               />
             </div>
             <p className="desc text-center text-gray-500 mt-6 underline">
-              <a href="https://join.zoho.com/418617324">or schedule now</a>
+              <a href="https://join.zoho.com/923152266">or schedule now</a>
             </p>
             <div className="flex justify-center mt-4">
               <button
@@ -78,16 +78,15 @@ export default function RemoteAssistant() {
               Use the below session ID or link to join the remote assistance.
             </p>
             <p className="mt-6 text-center text-2xl title text-[#2368FB] mb-4">
-              395 495 122
+                923-152-266
             </p>
             <hr />
             <div className="flex justify-center">
               <a
-                href="              https://join.zoho.com/418617324
-"
+                href="https://join.zoho.com/923152266"
                 className="mt-6 text-center underline text-xl title text-[#2368FB] mb-4"
               >
-                https://join.zoho.com/418617324
+                  https://join.zoho.com/923152266
               </a>
             </div>
             <p className="mt-2 text-center desc text-gray-600">

@@ -17,7 +17,6 @@ export default function SocialTable(props) {
       })
       .then((res) => {
         setQueries(res.data);
-        console.log("Test");
       });
   }, []);
 
@@ -27,14 +26,11 @@ export default function SocialTable(props) {
 
   function handleResolved(id, noted = false) {
     let data = {
-      tweetid: id,
+      tweetid: `1563102414454280193`,
+      text: noted ? "" : reply
     };
 
-    if (!noted) {
-      data["text"] = reply;
-    }
-
-    toast.promise(axios.post("http://127.0.0.1:8082/tweetaccepted/", data), {
+    toast.promise(axios.post("http://127.0.0.1:8082/tweetaccepted", data), {
       pending: {
         render() {
           return "Tweeting reply...";
@@ -111,7 +107,7 @@ export default function SocialTable(props) {
                       View
                     </a>
                     <button
-                      onClick={() => handleResolved(query.id, 1)}
+                      onClick={() => handleResolved(query.tweet_id, 1)}
                       class="flex flex-row bg-transparent hover:bg-yellow-500 text-yellow-700 font-semibold hover:text-white py-2 px-3 border-2 border-yellow-500 hover:border-transparent rounded"
                     >
                       Noted

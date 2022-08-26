@@ -109,7 +109,7 @@ export default function UserDashboard() {
                     </button>
                   </li>
                 </ul>
-                <li className="mt-64">
+                <div className="mt-64">
                   <button
                     onClick={() => setMenu(4)}
                     className={
@@ -135,7 +135,7 @@ export default function UserDashboard() {
                       Remote assistance
                     </span>
                   </button>
-                </li>
+                </div>
               </nav>
             </div>
           </div>
