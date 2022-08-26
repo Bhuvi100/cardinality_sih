@@ -1,11 +1,11 @@
 import AdminSideBar from "./AdminSidebar";
 import NavBar from "../../components/Navbar";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import auth from "../../utils/auth";
+import axios from "../../utils/axios";
 
 export default function NewModule() {
-
-  // const [togcss, setTogcss] = useState(false);
-  // const [togclass, setTogclass] = useState(false);
   const field_defaults = {
     text: {
       rules: ["required", "length", "email"],
@@ -87,8 +87,9 @@ export default function NewModule() {
   };
 
   const [fields, setFields] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
-  const [newField, setNewField] = useState("text")
+  const [newField, setNewField] = useState("text");
   const [options, setOptions] = useState({
     radio: [],
     checkbox: [],
@@ -162,243 +163,259 @@ export default function NewModule() {
           {field} Field - {id}
         </div>
         <div className="flex justify-end md:mr-3">
-        <button className="md:mt-3 md:mr-3 bg-red-500 text-white font-semibold text-lg px-4 py-2 rounded-xl" onClick={() => removeField(field, id)} type={"button"}>
-          Remove Field
-        </button>
+          <button
+            className="md:mt-3 md:mr-3 bg-red-500 text-white font-semibold text-lg px-4 py-2 rounded-xl"
+            onClick={() => removeField(field, id)}
+            type={"button"}
+          >
+            Remove Field
+          </button>
         </div>
         <div className="flex justify-center">
-        <div className="grid grid-cols-2 gap-3 p-6 w-4/5 justify-center bg-stone-100 rounded-xl mb-2 mt-4">
-        <div className="w-full md:w-full px-3 mb-2">
-          <label
-            className="block mb-1 text-lg font-semibold text-black"
-            htmlFor={`${field}-${id}-name`}
-          >
-            Enter Name of Field:
-          </label>
-          <input
-            className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2  rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-2 focus:border-blue-500 leading-tight focus:outline-none"
-            type="text"
-            required
-            name={`${field}-${id}-name`}
-            id={`${field}-${id}-name`}
-          />
-        </div>
-        <div className="w-full md:w-full px-3 mb-2">
-          <label
-            className="block mb-1 text-lg font-semibold text-black"
-            htmlFor={`${field}-${id}-label`}
-          >
-            Enter Label for Field:
-          </label>
-          <input
-            className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-2 focus:border-blue-500 leading-tight focus:outline-none"
-            type="text"
-            required
-            name={`${field}-${id}-label`}
-            id={`${field}-${id}-label`}
-          />
-        </div>
-        <div className="w-full md:w-full px-3 mb-2">
-          <label
-            className="block mb-1 text-lg font-semibold text-black"
-            htmlFor={`${field}-${id}-default`}
-          >
-            Enter Default Value of Field:
-          </label>
-          <input
-            className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-2 focus:border-blue-500 leading-tight focus:outline-none"
-            type="text"
-            name={`${field}-${id}-default`}
-            id={`${field}-${id}-default`}
-          />
-        </div>
-        <div className="w-full md:w-full px-3 mb-2">
-          <label
-            className="block mb-1 text-lg font-semibold text-black"
-            htmlFor={`${field}-${id}-red`}
-          >
-            Enter Red Text of Field:
-          </label>
-          <input
-            className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-2 focus:border-blue-500 leading-tight focus:outline-none"
-            type="text"
-            name={`${field}-${id}-red`}
-            id={`${field}-${id}-red`}
-          />
-        </div>
-        </div>
+          <div className="grid grid-cols-2 gap-3 p-6 w-4/5 justify-center bg-stone-100 rounded-xl mb-2 mt-4">
+            <div className="w-full md:w-full px-3 mb-2">
+              <label
+                className="block mb-1 text-lg font-semibold text-black"
+                htmlFor={`${field}-${id}-name`}
+              >
+                Enter Name of Field:
+              </label>
+              <input
+                className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2  rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-2 focus:border-blue-500 leading-tight focus:outline-none"
+                type="text"
+                required
+                name={`${field}-${id}-name`}
+                id={`${field}-${id}-name`}
+              />
+            </div>
+            <div className="w-full md:w-full px-3 mb-2">
+              <label
+                className="block mb-1 text-lg font-semibold text-black"
+                htmlFor={`${field}-${id}-label`}
+              >
+                Enter Label for Field:
+              </label>
+              <input
+                className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-2 focus:border-blue-500 leading-tight focus:outline-none"
+                type="text"
+                required
+                name={`${field}-${id}-label`}
+                id={`${field}-${id}-label`}
+              />
+            </div>
+            <div className="w-full md:w-full px-3 mb-2">
+              <label
+                className="block mb-1 text-lg font-semibold text-black"
+                htmlFor={`${field}-${id}-default`}
+              >
+                Enter Default Value of Field:
+              </label>
+              <input
+                className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-2 focus:border-blue-500 leading-tight focus:outline-none"
+                type="text"
+                name={`${field}-${id}-default`}
+                id={`${field}-${id}-default`}
+              />
+            </div>
+            <div className="w-full md:w-full px-3 mb-2">
+              <label
+                className="block mb-1 text-lg font-semibold text-black"
+                htmlFor={`${field}-${id}-red`}
+              >
+                Enter Red Text of Field:
+              </label>
+              <input
+                className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-2 focus:border-blue-500 leading-tight focus:outline-none"
+                type="text"
+                name={`${field}-${id}-red`}
+                id={`${field}-${id}-red`}
+              />
+            </div>
+          </div>
         </div>
         <br />
         {["checkbox", "radio", "select"].indexOf(field) !== -1 && (
           <div className="">
-            <div className="title text-2xl text-center text-blue-500 capitalize font-bold">Options</div>
+            <div className="title text-2xl text-center text-blue-500 capitalize font-bold">
+              Options
+            </div>
             <div className="ml-44">
-            <button type={"button"} className="md:mt-3 md:mr-3 bg-blue-500 text-white font-semibold text-lg px-4 py-2 rounded-xl" onClick={() => addNewOption(field, id)}>
-              Add new option
-            </button>
-            
-            {options[field][id].map((option_id) => (
-              <div key={option_id}>
-                {options[field][id].length > 1 && (
-                  <button
-                  className="md:mt-3 md:mr-3 bg-red-500 text-white font-semibold text-lg px-4 py-2 rounded-xl"
-                    type={"button"}
-                    onClick={() => removeOption(field, id, option_id)}
-                  >
-                    Remove option
-                  </button>
-                )}
-                <div className="w-4/5 justify-center p-3 bg-stone-100 rounded-xl mb-2 mt-4">
-                <div className="text-lg font-bold mt-3 px-3 mb-2 text-blue-500 ">Option {option_id}:</div>
-                <div className="flex flex-row">
-                <div className="w-full md:w-full px-3 mb-2">
-                  <label
-                    className="block mb-1 text-lg font-semibold text-black"
-                    htmlFor={`${field}-${id}-option-${option_id}-label`}
-                  >
-                    Enter label for option:
-                  </label>
-                  <input
-                    className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-2 focus:border-blue-500 leading-tight focus:outline-none"
-                    type="text"
-                    required
-                    name={`${field}-${id}-option-${option_id}-label`}
-                    id={`${field}-${id}-option-${option_id}-label`}
-                  />
+              <button
+                type={"button"}
+                className="md:mt-3 md:mr-3 bg-blue-500 text-white font-semibold text-lg px-4 py-2 rounded-xl"
+                onClick={() => addNewOption(field, id)}
+              >
+                Add new option
+              </button>
+
+              {options[field][id].map((option_id) => (
+                <div key={option_id}>
+                  {options[field][id].length > 1 && (
+                    <button
+                      className="md:mt-3 md:mr-3 bg-red-500 text-white font-semibold text-lg px-4 py-2 rounded-xl"
+                      type={"button"}
+                      onClick={() => removeOption(field, id, option_id)}
+                    >
+                      Remove option
+                    </button>
+                  )}
+                  <div className="w-4/5 justify-center p-3 bg-stone-100 rounded-xl mb-2 mt-4">
+                    <div className="text-lg font-bold mt-3 px-3 mb-2 text-blue-500 ">
+                      Option {option_id}:
+                    </div>
+                    <div className="flex flex-row">
+                      <div className="w-full md:w-full px-3 mb-2">
+                        <label
+                          className="block mb-1 text-lg font-semibold text-black"
+                          htmlFor={`${field}-${id}-option-${option_id}-label`}
+                        >
+                          Enter label for option:
+                        </label>
+                        <input
+                          className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-2 focus:border-blue-500 leading-tight focus:outline-none"
+                          type="text"
+                          required
+                          name={`${field}-${id}-option-${option_id}-label`}
+                          id={`${field}-${id}-option-${option_id}-label`}
+                        />
+                      </div>
+                      <div className="w-full md:w-full px-3 mb-2">
+                        <label
+                          className="block mb-1 text-lg font-semibold text-black"
+                          htmlFor={`${field}-${id}-option-${option_id}-value`}
+                        >
+                          Enter value for option:
+                        </label>
+                        <input
+                          className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-2 focus:border-blue-500 leading-tight focus:outline-none"
+                          type="text"
+                          required
+                          name={`${field}-${id}-option-${option_id}-value`}
+                          id={`${field}-${id}-option-${option_id}-value`}
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="w-full md:w-full px-3 mb-2">
-                  <label
-                    className="block mb-1 text-lg font-semibold text-black"
-                    htmlFor={`${field}-${id}-option-${option_id}-value`}
-                  >
-                    Enter value for option:
-                  </label>
-                  <input
-                    className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-2 focus:border-blue-500 leading-tight focus:outline-none"
-                    type="text"
-                    required
-                    name={`${field}-${id}-option-${option_id}-value`}
-                    id={`${field}-${id}-option-${option_id}-value`}
-                  />
-                </div>
-                </div>
-                </div>
-              </div>
-            ))}
+              ))}
             </div>
           </div>
         )}
 
         {useCustomClasses && (
           <div className="">
-            <div className="title text-2xl mt-5 text-center text-blue-500 capitalize font-bold">Classes</div>
-            <div className="flex justify-center">
-           <div className="grid grid-cols-2 gap-3 w-4/5 justify-center p-3 bg-stone-100 rounded-xl mb-2 mt-4">
-            {Object.entries(field_defaults[field].elements).map(
-              ([element_name, classes]) => (
-                <div className="">
-                <div className="w-full md:w-full px-3 mb-2">
-                  <label
-                    className="block mb-1 text-lg font-semibold text-black"
-                    htmlFor={`${field}-${id}-class-${element_name}`}
-                  >
-                    Enter classes for the {element_name}:
-                  </label>
-                  <input
-                    className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-3 focus:border-blue-500 leading-tight focus:outline-none"
-                    type="text"
-                    required
-                    name={`${field}-${id}-class-${element_name}`}
-                    id={`${field}-${id}-class-${element_name}`}
-                    defaultValue={classes}
-                  />
-                </div>
-                </div>
-              )
-            )}
+            <div className="title text-2xl mt-5 text-center text-blue-500 capitalize font-bold">
+              Classes
             </div>
+            <div className="flex justify-center">
+              <div className="grid grid-cols-2 gap-3 w-4/5 justify-center p-3 bg-stone-100 rounded-xl mb-2 mt-4">
+                {Object.entries(field_defaults[field].elements).map(
+                  ([element_name, classes]) => (
+                    <div className="">
+                      <div className="w-full md:w-full px-3 mb-2">
+                        <label
+                          className="block mb-1 text-lg font-semibold text-black"
+                          htmlFor={`${field}-${id}-class-${element_name}`}
+                        >
+                          Enter classes for the {element_name}:
+                        </label>
+                        <input
+                          className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-3 focus:border-blue-500 leading-tight focus:outline-none"
+                          type="text"
+                          required
+                          name={`${field}-${id}-class-${element_name}`}
+                          id={`${field}-${id}-class-${element_name}`}
+                          defaultValue={classes}
+                        />
+                      </div>
+                    </div>
+                  )
+                )}
+              </div>
             </div>
           </div>
         )}
 
         {useCustomCSS && (
           <div>
-            <div className="title text-2xl mt-5 text-center text-blue-500 capitalize font-bold">CSS</div>
-            <div className="flex justify-center">
-            <div className="grid grid-cols-2 gap-3 w-4/5 justify-center p-3 bg-stone-100 rounded-xl mb-2 mt-4">
-            {Object.entries(field_defaults[field].elements).map(
-              ([element_name, classes]) => (
-                <div className="w-full md:w-full px-3 mb-2">
-                  <label
-                    className="block mb-1 text-lg font-semibold text-black"
-                    htmlFor={`${field}-${id}-css-${element_name}`}
-                  >
-                    Enter css for the {element_name}:
-                  </label>
-                  <input
-                    className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-3 focus:border-blue-500 leading-tight focus:outline-none"
-                    type="text"
-                    required
-                    name={`${field}-${id}-css-${element_name}`}
-                    id={`${field}-${id}-css-${element_name}`}
-                  />
-                </div>
-              )
-            )}
+            <div className="title text-2xl mt-5 text-center text-blue-500 capitalize font-bold">
+              CSS
             </div>
+            <div className="flex justify-center">
+              <div className="grid grid-cols-2 gap-3 w-4/5 justify-center p-3 bg-stone-100 rounded-xl mb-2 mt-4">
+                {Object.entries(field_defaults[field].elements).map(
+                  ([element_name, classes]) => (
+                    <div className="w-full md:w-full px-3 mb-2">
+                      <label
+                        className="block mb-1 text-lg font-semibold text-black"
+                        htmlFor={`${field}-${id}-css-${element_name}`}
+                      >
+                        Enter css for the {element_name}:
+                      </label>
+                      <input
+                        className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-3 focus:border-blue-500 leading-tight focus:outline-none"
+                        type="text"
+                        required
+                        name={`${field}-${id}-css-${element_name}`}
+                        id={`${field}-${id}-css-${element_name}`}
+                      />
+                    </div>
+                  )
+                )}
+              </div>
             </div>
           </div>
-        )
-        
-        }
+        )}
 
         <div>
-          <div className="title text-2xl mt-5 text-center text-blue-500 capitalize font-bold">Rules</div>
-          
+          <div className="title text-2xl mt-5 text-center text-blue-500 capitalize font-bold">
+            Rules
+          </div>
+
           {Object.values(field_defaults[field].rules).map((rule) => {
             switch (rule) {
               case "required":
                 return (
                   <div className="ml-20 mt-4">
-                  <div className="w-full md:w-full px-3 mb-5">
-                    <label className="block mb-1 ml-4 text-lg font-semibold text-black">
-                      Please select whether it is required or optional
-                    </label>
-                    <div className="grid grid-cols-3 ml-3 w-4/5 justify-center p-3 bg-stone-100 rounded-xl mb-2 mt-4">
-                      <div className="form-check form-check-inline flex flex-row">
-                        <input
-                          className="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none transition duration-200 mt-1.5 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                          type="radio"
-                          required
-                          name={`${field}-${id}-rule-required`}
-                          id={`${field}-${id}-rule-required-yes`}
-                          value="required"
-                        />
-                        <label
-                          className="block mb-1 text-lg font-semibold text-black"
-                          htmlFor={`${field}-${id}-rule-required-yes`}
-                        >
-                          Required
-                        </label>
-                      </div>
-                      <div className="form-check form-check-inline flex flex-row">
-                        <input
-                          className="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none transition duration-200 mt-1.5 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                          type="radio"
-                          required
-                          name={`${field}-${id}-rule-required`}
-                          id={`${field}-${id}-rule-required-no`}
-                          value="nullable"
-                        />
-                        <label
-                          className="block mb-1 text-lg font-semibold text-black"
-                          htmlFor={`${field}-${id}-rule-required-no`}
-                        >
-                          Optional
-                        </label>
+                    <div className="w-full md:w-full px-3 mb-5">
+                      <label className="block mb-1 ml-4 text-lg font-semibold text-black">
+                        Please select whether it is required or optional
+                      </label>
+                      <div className="grid grid-cols-3 ml-3 w-4/5 justify-center p-3 bg-stone-100 rounded-xl mb-2 mt-4">
+                        <div className="form-check form-check-inline flex flex-row">
+                          <input
+                            className="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none transition duration-200 mt-1.5 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                            type="radio"
+                            required
+                            name={`${field}-${id}-rule-required`}
+                            id={`${field}-${id}-rule-required-yes`}
+                            value="required"
+                          />
+                          <label
+                            className="block mb-1 text-lg font-semibold text-black"
+                            htmlFor={`${field}-${id}-rule-required-yes`}
+                          >
+                            Required
+                          </label>
+                        </div>
+                        <div className="form-check form-check-inline flex flex-row">
+                          <input
+                            className="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none transition duration-200 mt-1.5 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                            type="radio"
+                            required
+                            name={`${field}-${id}-rule-required`}
+                            id={`${field}-${id}-rule-required-no`}
+                            value="nullable"
+                          />
+                          <label
+                            className="block mb-1 text-lg font-semibold text-black"
+                            htmlFor={`${field}-${id}-rule-required-no`}
+                          >
+                            Optional
+                          </label>
+                        </div>
                       </div>
                     </div>
-                  </div>
                   </div>
                 );
               case "length":
@@ -568,63 +585,190 @@ export default function NewModule() {
     );
   }
 
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    let data = new FormData(e.target);
+    data.append("fields", JSON.stringify(fields));
+    data.append("options", JSON.stringify(options));
+
+    toast.promise(axios.post("/modules", data), {
+      pending: {
+        render() {
+          setIsLoading(true);
+          return "Signing in......";
+        },
+      },
+      success: {
+        render({ data }) {
+          setIsLoading(false);
+          auth().setToken(data.data);
+          return "Logged in successfully";
+        },
+      },
+      error: {
+        render({ data }) {
+          setIsLoading(false);
+          let status = data.response.status;
+          data = data.response.data;
+          if (status === 404) {
+            return "Email doesn't exist. Please register!";
+          }
+          if (status === 422) {
+            return Object.values(data.errors)[0].toString();
+          } else {
+            return "Something went wrong!";
+          }
+        },
+      },
+    });
+  }
+
   return (
     <div>
       <div className="">
-       
         <div class="w-full mb-6 lg:w-[100%] xl:w-[80%] 2xl:w-[85%]">
-          <NavBar currentMenu="Admin Dashboard" />
-          <div class="grid grid-cols-2 px-6 pt-6 2xl:container ">
-          <div class="dropdown inline-block relative">
-  
-  <select onChange={(e) => setNewField(e.target.value)} class=" bg-gray-200 focus:border-1 text-blue-600 font-semibold text-lg px-4 py-2 rounded-xl">
-    <option value="text" class="pt-1"> 
-              Text Field
-            </option>
-    <option value="numeric" class="pt-1 rounded-xl border-0">
-              Numeric Field
-           </option>
-           <option value="textarea" class="pt-1 rounded-xl border-0">
-              Textarea Field
-           </option>
-           <option value="radio" class="pt-1 rounded-xl border-0">
-              Radio Field
-           </option>
-           <option value="checkbox" class="pt-1">
-              CheckBox Field
-           </option>
-           <option value="select" class="pt-1">
-              Select Field
-           </option>
-           <option value="file" class="pt-1">
-              File Field
-           </option>
-  </select>
-  <button className="ml-3 hover:bg-blue-500 hover:text-white bg-white text-blue-500 border-blue-500 border-2 font-semibold text-lg px-4 py-2 rounded-xl" onClick={() => addNewField(newField)}>Add Field</button>
-</div>
-         <div className="flex justify-end gap-2">
-            <button className={useCustomClasses == false ? "  bg-white text-blue-500 border-white border-2 font-semibold text-lg px-4 py-2 rounded-xl" : " bg-blue-500 text-white border-blue-500 border-2 font-semibold text-lg px-4 py-2 rounded-xl"} onClick={() => setUseCustomClasses(!useCustomClasses)}>
-              Toggle Custom Classes
-            </button>
-          
-            <button onClick={() => setUseCustomCSS(!useCustomCSS)} className={useCustomCSS == false ? "  bg-white text-blue-500 border-white border-2 font-semibold text-lg px-4 py-2 rounded-xl" : " bg-blue-500 text-white border-blue-500 border-2 font-semibold text-lg px-4 py-2 rounded-xl"}>
-              Toggle Custom CSS
-            </button>
+          <div className="w-full md:w-full px-3 mb-4">
+            <label className="block mb-1 text-lg font-semibold text-black">
+              Enter Name of the module:
+            </label>
+            <input
+              className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-3 focus:border-blue-500 leading-tight focus:outline-none"
+              type="text"
+              required
+              name={"name"}
+            />
+          </div>
+          <div className="w-full md:w-full px-3 mb-4">
+            <label className="block mb-1 text-lg font-semibold text-black">
+              Enter Description of the module:
+            </label>
+            <textarea
+              rows={4}
+              className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-3 focus:border-blue-500 leading-tight focus:outline-none"
+              required
+              name={"description"}
+            />
+          </div>
+          <div className="w-full md:w-full px-3 mb-8">
+            <label className="block mb-1 text-lg font-semibold text-black">
+              Enter Image of the module:
+            </label>
+            <input
+              className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-3 focus:border-blue-500 leading-tight focus:outline-none"
+              type="file"
+              required
+              name={"image"}
+              accept={".jpg,.jpeg,.png"}
+            />
+          </div>
+          <div className=" px-3 mb-3 w-full justify-center p-3 bg-white rounded-xl mt-4 ml-4">
+            <label className="block mb-2 text-lg font-semibold text-black">
+              For institute:
+            </label>
+            <div className="grid grid-cols-3 ml-3">
+              <div className="form-check form-check-inline flex flex-row">
+                <input
+                  className="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                  type="radio"
+                  required
+                  name={"for_institute"}
+                  id={`for_institute_yes`}
+                  value="1"
+                />
+                <label
+                  className="form-check-label inline-block text-gray-800"
+                  htmlFor={`for_institute_yes`}
+                >
+                  Yes
+                </label>
+              </div>
+              <div className="form-check form-check-inline flex flex-row">
+                <input
+                  className="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                  type="radio"
+                  required
+                  name={`for_institute`}
+                  id={`for_institute_no`}
+                  value="0"
+                />
+                <label
+                  className="form-check-label inline-block text-gray-800"
+                  htmlFor={`for_institute_no`}
+                >
+                  No
+                </label>
+              </div>
             </div>
+          </div>
+          <div class="grid grid-cols-2 px-6 pt-6 2xl:container mt-4">
+            <div class="dropdown inline-block relative">
+              <select
+                onChange={(e) => setNewField(e.target.value)}
+                class=" bg-gray-200 focus:border-1 text-blue-600 font-semibold text-lg px-4 py-2 rounded-xl"
+              >
+                <option value="text" class="pt-1">
+                  Text Field
+                </option>
+                <option value="numeric" class="pt-1 rounded-xl border-0">
+                  Numeric Field
+                </option>
+                <option value="textarea" class="pt-1 rounded-xl border-0">
+                  Textarea Field
+                </option>
+                <option value="radio" class="pt-1 rounded-xl border-0">
+                  Radio Field
+                </option>
+                <option value="checkbox" class="pt-1">
+                  CheckBox Field
+                </option>
+                <option value="select" class="pt-1">
+                  Select Field
+                </option>
+                <option value="file" class="pt-1">
+                  File Field
+                </option>
+              </select>
+              <button
+                className="ml-3 hover:bg-blue-500 hover:text-white bg-white text-blue-500 border-blue-500 border-2 font-semibold text-lg px-4 py-2 rounded-xl"
+                onClick={() => addNewField(newField)}
+              >
+                Add Field
+              </button>
             </div>
-            <br />
-            <br />
-            <form>
-              {Object.entries(fields).map(([id, field]) =>
-                renderField(field, id)
-              )}
-            </form>
-          
+            <div className="flex justify-end gap-2">
+              <button
+                className={
+                  useCustomClasses == false
+                    ? "  bg-white text-blue-500 border-white border-2 font-semibold text-lg px-4 py-2 rounded-xl"
+                    : " bg-blue-500 text-white border-blue-500 border-2 font-semibold text-lg px-4 py-2 rounded-xl"
+                }
+                onClick={() => setUseCustomClasses(!useCustomClasses)}
+              >
+                Toggle Custom Classes
+              </button>
+
+              <button
+                onClick={() => setUseCustomCSS(!useCustomCSS)}
+                className={
+                  useCustomCSS == false
+                    ? "  bg-white text-blue-500 border-white border-2 font-semibold text-lg px-4 py-2 rounded-xl"
+                    : " bg-blue-500 text-white border-blue-500 border-2 font-semibold text-lg px-4 py-2 rounded-xl"
+                }
+              >
+                Toggle Custom CSS
+              </button>
+            </div>
+          </div>
+          <br />
+          <br />
+          <form>
+            {Object.entries(fields).map(([id, field]) =>
+              renderField(field, id)
+            )}
+          </form>
         </div>
       </div>
     </div>
   );
 }
-
-
-
