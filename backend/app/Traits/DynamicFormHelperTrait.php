@@ -1,6 +1,7 @@
 <?php
+namespace App\Traits;
 
-trait DynamicFormHelper
+trait DynamicFormHelperTrait
 {
     public static array $fields = [
         'text',
@@ -22,7 +23,7 @@ trait DynamicFormHelper
         return $this->fields[$name];
     }
 
-    public function getDefaultClasses(string $field_type) {
+    public static function getDefaultClasses(string $field_type) {
         return [
             'text' => [
                 'outer_div' => 'w-full md:w-full px-3 mb-3',
@@ -96,7 +97,7 @@ trait DynamicFormHelper
     {
         return [
             'text' => ['required','nullable','min','max','email'],
-            'numeric' => ['required','nullable','min','max','digits_between'],
+            'numeric' => ['required','nullable','min','max'],
             'textarea' => ['required','nullable','min','max'],
             'radio' => ['required','nullable'],
             'checkbox' => ['required','nullable'],

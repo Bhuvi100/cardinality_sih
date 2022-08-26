@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Storage;
 
 /** @mixin \App\Models\Module */
 class ModuleResource extends JsonResource
@@ -18,7 +19,7 @@ class ModuleResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
-            'image' => $this->image,
+            'image' => Storage::disk('public')->url($this->image),
             'fields' => array_merge($this->getBase()->fields, $this->fields),
             'rules' => array_merge($this->getBase()->rules, $this->rules),
             'css' => array_merge($this->getBase()->css, $this->css),

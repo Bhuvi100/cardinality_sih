@@ -1,16 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "../../components/Navbar";
+import GrievanceForm from "../../components/greivanceForm";
+import Loading from "../../components/Loading";
+import axios from "../../utils/axios";
 
 export default function UserHome() {
   const [search, setSearch] = useState(true);
+  const [isSelected, setIsSelected] = useState(false);
+
+  const [faq, setFaq] = useState(false);
+
+  useEffect(() => {
+    axios
+      .get("/faq" + (search !== true ? `/${search}` : ""))
+      .then((res) => setFaq(res.data));
+  }, [search]);
+
+  if (faq === false) {
+    return <Loading></Loading>;
+  }
+
+  if (isSelected) {
+    return <GrievanceForm setIsSelected={setIsSelected}></GrievanceForm>;
+  }
+
   return (
     <div>
       <NavBar currentMenu="Home" />
       <div className="mt-10 flex justify-center space-x-4">
         <div class="relative w-1/2">
           <input
-            placeholder="Enter your grivience"
+            placeholder="Enter your grievance"
             class="w-full desc border-gray-300 mt-3 py-3 pl-3 pr-12  border-2 bg-white bg-opacity-60 text-md shadow-xl rounded-xl"
+            onKeyUp={(e) => {
+              setSearch(e.target.value);
+            }}
           />
 
           <span class="absolute text-gray-500 -translate-y-1/2 pointer-events-none top-1/2 right-4">
@@ -30,19 +54,20 @@ export default function UserHome() {
         </div>
       </div>
 
-      {search == true ? (
+      {faq.length !== 0 ? (
         <div>
-          <div className="mt-8 ml-2 md:pl-8">
-            <h1 className="text-xl title text-[#273339] mb-2">Suggested topics</h1>
-            <div className="flex md:space-x-4 md:mt-4">
-              <a
-                href=""
+          <div className="mt-8 pl-8">
+            <h1 className="text-xl title text-[#273339]">
+              Suggested Categories
+            </h1>
+            <div className="flex space-x-4 mt-4">
+              <div
                 class="block overflow-hidden rounded-2xl w-80 shadow-xl"
+                onClick={() => setIsSelected(1)}
               >
                 <img
                   class="object-cover w-full h-32"
                   src="https://www.freshersnow.com/wp-content/uploads/2019/12/AICTE-PG-Scholarship.png"
-                  alt=""
                 />
 
                 <div class="p-4 bg-white bg-opacity-50 border-white">
@@ -54,197 +79,72 @@ export default function UserHome() {
                     Kaasu kudupana nu theriyathu aana kandipa kadupu kudupan
                   </p>
                 </div>
-              </a>
+              </div>
             </div>
           </div>
           <div className="mt-8 pl-8">
             <h1 className="text-xl title text-[#273339]">Similar griviences</h1>
-            <div class="bg-white bg-opacity-50 border-white border-2 shadow-xl divide-y  rounded-xl mr-10 mt-3">
-              <details class="p-6 group ">
-                <summary class="flex items-center justify-between cursor-pointer">
-                  <h5 class=" text-[#273339] ">Na adicha ena agum?</h5>
+            {faq.map((f, index) => (
+              <div
+                key={index}
+                class="bg-white bg-opacity-50 border-white border-2 shadow-xl divide-y  rounded-xl mr-10 mt-3"
+              >
+                <details class="p-6 group ">
+                  <summary class="flex items-center justify-between cursor-pointer">
+                    <h5 class=" text-[#273339] ">{f.subject}</h5>
 
-                  <span class="relative flex-shrink-0 ml-1.5 w-5 h-5">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
+                    <span class="relative flex-shrink-0 ml-1.5 w-5 h-5">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
 
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                  </span>
-                </summary>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </span>
+                  </summary>
 
-                <p class="mt-4 text-sm leading-relaxed text-gray-500">
-                  Na adicha thaanga mata naalu masam thoonga mata modhi paru
-                  veedu poye seramata
-                </p>
-              </details>
-            </div>
-            <div class="bg-white bg-opacity-50 border-white border-2 shadow-xl divide-y  rounded-xl mr-10 mt-3">
-              <details class="p-6 group ">
-                <summary class="flex items-center justify-between cursor-pointer">
-                  <h5 class=" text-[#273339] ">Na adicha ena agum?</h5>
-
-                  <span class="relative flex-shrink-0 ml-1.5 w-5 h-5">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                  </span>
-                </summary>
-
-                <p class="mt-4 text-sm leading-relaxed text-gray-500">
-                  Na adicha thaanga mata naalu masam thoonga mata modhi paru
-                  veedu poye seramata
-                </p>
-              </details>
-            </div>
-            <div class="bg-white bg-opacity-50 border-white border-2 shadow-xl divide-y  rounded-xl mr-10 mt-3">
-              <details class="p-6 group ">
-                <summary class="flex items-center justify-between cursor-pointer">
-                  <h5 class=" text-[#273339] ">Na adicha ena agum?</h5>
-
-                  <span class="relative flex-shrink-0 ml-1.5 w-5 h-5">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                  </span>
-                </summary>
-
-                <p class="mt-4 text-sm leading-relaxed text-gray-500">
-                  Na adicha thaanga mata naalu masam thoonga mata modhi paru
-                  veedu poye seramata
-                </p>
-              </details>
-            </div>
-            <div class="bg-white bg-opacity-50 border-white border-2 shadow-xl divide-y  rounded-xl mr-10 mt-3">
-              <details class="p-6 group ">
-                <summary class="flex items-center justify-between cursor-pointer">
-                  <h5 class=" text-[#273339] ">Na adicha ena agum?</h5>
-
-                  <span class="relative flex-shrink-0 ml-1.5 w-5 h-5">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                  </span>
-                </summary>
-
-                <p class="mt-4 text-sm leading-relaxed text-gray-500">
-                  Na adicha thaanga mata naalu masam thoonga mata modhi paru
-                  veedu poye seramata
-                </p>
-              </details>
-            </div>
+                  <p class="mt-4 text-sm leading-relaxed text-gray-500">
+                    {f.description}
+                  </p>
+                </details>
+              </div>
+            ))}
           </div>
         </div>
       ) : (
         <div className="mt-20 text-center">
           <p>
-            No similar griviences were found, please submit your grivience and
+            No similar grievances were found, please submit your grievance and
             we will reach back to you with a solution.
           </p>
-          <button className="bg-blue-500 rounded p-2 mt-4">
-            Submit your grivience
+          <button
+            className="bg-blue-500 rounded p-2 mt-4"
+            onClick={() => setIsSelected(1)}
+          >
+            Submit your grievance
           </button>
         </div>
       )}

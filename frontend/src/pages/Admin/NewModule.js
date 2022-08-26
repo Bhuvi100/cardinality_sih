@@ -18,7 +18,7 @@ export default function NewModule() {
       },
     },
     numeric: {
-      rules: ["required", "min", "max", "length"],
+      rules: ["required", "min", "max"],
       elements: {
         outer_div: "w-full md:w-full px-3 mb-3",
         label: "block mb-1 text-sm font-bold text-black",
@@ -96,8 +96,8 @@ export default function NewModule() {
     select: [],
   });
 
-  const [useCustomClasses, setUseCustomClasses] = useState(true);
-  const [useCustomCSS, setUseCustomCSS] = useState(true);
+  const [useCustomClasses, setUseCustomClasses] = useState(false);
+  const [useCustomCSS, setUseCustomCSS] = useState(false);
 
   function addNewField(field) {
     let current_fields = { ...fields };
@@ -176,7 +176,7 @@ export default function NewModule() {
             <div className="w-full md:w-full px-3 mb-2">
               <label
                 className="block mb-1 text-lg font-semibold text-black"
-                htmlFor={`${field}-${id}-name`}
+                htmlFor={`field-${id}-name`}
               >
                 Enter Name of Field:
               </label>
@@ -184,14 +184,14 @@ export default function NewModule() {
                 className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2  rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-2 focus:border-blue-500 leading-tight focus:outline-none"
                 type="text"
                 required
-                name={`${field}-${id}-name`}
-                id={`${field}-${id}-name`}
+                name={`field-${id}-name`}
+                id={`field-${id}-name`}
               />
             </div>
             <div className="w-full md:w-full px-3 mb-2">
               <label
                 className="block mb-1 text-lg font-semibold text-black"
-                htmlFor={`${field}-${id}-label`}
+                htmlFor={`field-${id}-label`}
               >
                 Enter Label for Field:
               </label>
@@ -199,36 +199,36 @@ export default function NewModule() {
                 className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-2 focus:border-blue-500 leading-tight focus:outline-none"
                 type="text"
                 required
-                name={`${field}-${id}-label`}
-                id={`${field}-${id}-label`}
+                name={`field-${id}-label`}
+                id={`field-${id}-label`}
               />
             </div>
             <div className="w-full md:w-full px-3 mb-2">
               <label
                 className="block mb-1 text-lg font-semibold text-black"
-                htmlFor={`${field}-${id}-default`}
+                htmlFor={`field-${id}-default`}
               >
                 Enter Default Value of Field:
               </label>
               <input
                 className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-2 focus:border-blue-500 leading-tight focus:outline-none"
                 type="text"
-                name={`${field}-${id}-default`}
-                id={`${field}-${id}-default`}
+                name={`field-${id}-default`}
+                id={`field-${id}-default`}
               />
             </div>
             <div className="w-full md:w-full px-3 mb-2">
               <label
                 className="block mb-1 text-lg font-semibold text-black"
-                htmlFor={`${field}-${id}-red`}
+                htmlFor={`field-${id}-red_text`}
               >
                 Enter Red Text of Field:
               </label>
               <input
                 className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-2 focus:border-blue-500 leading-tight focus:outline-none"
                 type="text"
-                name={`${field}-${id}-red`}
-                id={`${field}-${id}-red`}
+                name={`field-${id}-red_text`}
+                id={`field-${id}-red_text`}
               />
             </div>
           </div>
@@ -267,7 +267,7 @@ export default function NewModule() {
                       <div className="w-full md:w-full px-3 mb-2">
                         <label
                           className="block mb-1 text-lg font-semibold text-black"
-                          htmlFor={`${field}-${id}-option-${option_id}-label`}
+                          htmlFor={`field-${id}-option-${option_id}-label`}
                         >
                           Enter label for option:
                         </label>
@@ -275,14 +275,14 @@ export default function NewModule() {
                           className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-2 focus:border-blue-500 leading-tight focus:outline-none"
                           type="text"
                           required
-                          name={`${field}-${id}-option-${option_id}-label`}
-                          id={`${field}-${id}-option-${option_id}-label`}
+                          name={`field-${id}-option-${option_id}-label`}
+                          id={`field-${id}-option-${option_id}-label`}
                         />
                       </div>
                       <div className="w-full md:w-full px-3 mb-2">
                         <label
                           className="block mb-1 text-lg font-semibold text-black"
-                          htmlFor={`${field}-${id}-option-${option_id}-value`}
+                          htmlFor={`field-${id}-option-${option_id}-value`}
                         >
                           Enter value for option:
                         </label>
@@ -290,8 +290,8 @@ export default function NewModule() {
                           className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-2 focus:border-blue-500 leading-tight focus:outline-none"
                           type="text"
                           required
-                          name={`${field}-${id}-option-${option_id}-value`}
-                          id={`${field}-${id}-option-${option_id}-value`}
+                          name={`field-${id}-option-${option_id}-value`}
+                          id={`field-${id}-option-${option_id}-value`}
                         />
                       </div>
                     </div>
@@ -315,7 +315,7 @@ export default function NewModule() {
                       <div className="w-full md:w-full px-3 mb-2">
                         <label
                           className="block mb-1 text-lg font-semibold text-black"
-                          htmlFor={`${field}-${id}-class-${element_name}`}
+                          htmlFor={`field-${id}-class-${element_name}`}
                         >
                           Enter classes for the {element_name}:
                         </label>
@@ -323,8 +323,8 @@ export default function NewModule() {
                           className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-3 focus:border-blue-500 leading-tight focus:outline-none"
                           type="text"
                           required
-                          name={`${field}-${id}-class-${element_name}`}
-                          id={`${field}-${id}-class-${element_name}`}
+                          name={`field-${id}-class-${element_name}`}
+                          id={`field-${id}-class-${element_name}`}
                           defaultValue={classes}
                         />
                       </div>
@@ -348,7 +348,7 @@ export default function NewModule() {
                     <div className="w-full md:w-full px-3 mb-2">
                       <label
                         className="block mb-1 text-lg font-semibold text-black"
-                        htmlFor={`${field}-${id}-css-${element_name}`}
+                        htmlFor={`field-${id}-css-${element_name}`}
                       >
                         Enter css for the {element_name}:
                       </label>
@@ -356,8 +356,8 @@ export default function NewModule() {
                         className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-3 focus:border-blue-500 leading-tight focus:outline-none"
                         type="text"
                         required
-                        name={`${field}-${id}-css-${element_name}`}
-                        id={`${field}-${id}-css-${element_name}`}
+                        name={`field-${id}-css-${element_name}`}
+                        id={`field-${id}-css-${element_name}`}
                       />
                     </div>
                   )
@@ -387,13 +387,13 @@ export default function NewModule() {
                             className="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none transition duration-200 mt-1.5 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                             type="radio"
                             required
-                            name={`${field}-${id}-rule-required`}
-                            id={`${field}-${id}-rule-required-yes`}
-                            value="required"
+                            name={`field-${id}-rule-required`}
+                            id={`field-${id}-rule-required-yes`}
+                            value="1"
                           />
                           <label
                             className="block mb-1 text-lg font-semibold text-black"
-                            htmlFor={`${field}-${id}-rule-required-yes`}
+                            htmlFor={`field-${id}-rule-required-yes`}
                           >
                             Required
                           </label>
@@ -403,13 +403,13 @@ export default function NewModule() {
                             className="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none transition duration-200 mt-1.5 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                             type="radio"
                             required
-                            name={`${field}-${id}-rule-required`}
-                            id={`${field}-${id}-rule-required-no`}
-                            value="nullable"
+                            name={`field-${id}-rule-required`}
+                            id={`field-${id}-rule-required-no`}
+                            value="0"
                           />
                           <label
                             className="block mb-1 text-lg font-semibold text-black"
-                            htmlFor={`${field}-${id}-rule-required-no`}
+                            htmlFor={`field-${id}-rule-required-no`}
                           >
                             Optional
                           </label>
@@ -424,31 +424,29 @@ export default function NewModule() {
                     <div className="w-full md:w-full px-3 mb-2">
                       <label
                         className="block mb-1 text-lg font-semibold text-black"
-                        htmlFor={`${field}-${id}-rule-length-min`}
+                        htmlFor={`field-${id}-rule-length-min`}
                       >
                         Enter minimum length for the field:
                       </label>
                       <input
                         className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-3 focus:border-blue-500 leading-tight focus:outline-none"
                         type="text"
-                        required
-                        name={`${field}-${id}-rule-length-min`}
-                        id={`${field}-${id}-rule-length-min`}
+                        name={`field-${id}-rule-length-min`}
+                        id={`field-${id}-rule-length-min`}
                       />
                     </div>
                     <div className="w-full md:w-full px-3 mb-2">
                       <label
                         className="block mb-1 text-lg font-semibold text-black"
-                        htmlFor={`${field}-${id}-rule-length-max`}
+                        htmlFor={`field-${id}-rule-length-max`}
                       >
                         Enter maximum length for the field:
                       </label>
                       <input
                         className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-3 focus:border-blue-500 leading-tight focus:outline-none"
                         type="text"
-                        required
-                        name={`${field}-${id}-rule-length-max`}
-                        id={`${field}-${id}-rule-length-max`}
+                        name={`field-${id}-rule-length-max`}
+                        id={`field-${id}-rule-length-max`}
                       />
                     </div>
                   </div>
@@ -458,7 +456,7 @@ export default function NewModule() {
                   <div className=" px-3 mb-3 w-4/5 justify-center p-3 bg-stone-100 rounded-xl mt-4 ml-24">
                     <label
                       className="block mb-2 text-lg font-semibold text-black"
-                      htmlFor={`${field}-${id}-rule-email`}
+                      htmlFor={`field-${id}-rule-email`}
                     >
                       Email validation for the field:
                     </label>
@@ -468,13 +466,13 @@ export default function NewModule() {
                           className="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                           type="radio"
                           required
-                          name={`${field}-${id}-rule-email`}
-                          id={`${field}-${id}-rule-email-yes`}
+                          name={`field-${id}-rule-email`}
+                          id={`field-${id}-rule-email-yes`}
                           value="1"
                         />
                         <label
                           className="form-check-label inline-block text-gray-800"
-                          htmlFor={`${field}-${id}-rule-email-yes`}
+                          htmlFor={`field-${id}-rule-email-yes`}
                         >
                           Yes
                         </label>
@@ -484,13 +482,13 @@ export default function NewModule() {
                           className="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                           type="radio"
                           required
-                          name={`${field}-${id}-rule-email`}
-                          id={`${field}-${id}-rule-email-no`}
+                          name={`field-${id}-rule-email`}
+                          id={`field-${id}-rule-email-no`}
                           value="0"
                         />
                         <label
                           className="form-check-label inline-block text-gray-800"
-                          htmlFor={`${field}-${id}-rule-email-no`}
+                          htmlFor={`field-${id}-rule-email-no`}
                         >
                           No
                         </label>
@@ -505,15 +503,15 @@ export default function NewModule() {
                     <div className="px-3 mb-3 w-4/5 justify-center p-3 bg-stone-100 rounded-xl mt-4 ml-24">
                       <label
                         className="block mb-1 text-lg font-semibold text-black"
-                        htmlFor={`${field}-${id}-rule-min`}
+                        htmlFor={`field-${id}-rule-min`}
                       >
                         Enter minimum value for the field:
                       </label>
                       <input
                         className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-3 focus:border-blue-500 leading-tight focus:outline-none"
                         type="text"
-                        name={`${field}-${id}-rule-min`}
-                        id={`${field}-${id}-rule-min`}
+                        name={`field-${id}-rule-min`}
+                        id={`field-${id}-rule-min`}
                       />
                     </div>
                   </div>
@@ -524,15 +522,15 @@ export default function NewModule() {
                     <div className="px-3 mb-3 w-4/5 justify-center p-3 bg-stone-100 rounded-xl mt-4 ml-24">
                       <label
                         className="block mb-1 text-lg font-semibold text-black"
-                        htmlFor={`${field}-${id}-rule-max`}
+                        htmlFor={`field-${id}-rule-max`}
                       >
                         Enter maximum value for the field:
                       </label>
                       <input
                         className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-3 focus:border-blue-500 leading-tight focus:outline-none"
                         type="text"
-                        name={`${field}-${id}-rule-max`}
-                        id={`${field}-${id}-rule-max`}
+                        name={`field-${id}-rule-max`}
+                        id={`field-${id}-rule-max`}
                       />
                     </div>
                   </div>
@@ -543,15 +541,15 @@ export default function NewModule() {
                     <div className="px-3 mb-3 w-4/5 justify-center p-3 bg-stone-100 rounded-xl mt-4 ml-24">
                       <label
                         className="block mb-1 text-lg font-semibold text-black"
-                        htmlFor={`${field}-${id}-rule-size`}
+                        htmlFor={`field-${id}-rule-size`}
                       >
                         Enter file size for the field:
                       </label>
                       <input
                         className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-3 focus:border-blue-500 leading-tight focus:outline-none"
                         type="text"
-                        name={`${field}-${id}-rule-size`}
-                        id={`${field}-${id}-rule-size`}
+                        name={`field-${id}-rule-size`}
+                        id={`field-${id}-rule-size`}
                       />
                     </div>
                   </div>
@@ -563,15 +561,15 @@ export default function NewModule() {
                     <div className="px-3 mb-3 w-4/5 justify-center p-3 bg-stone-100 rounded-xl mt-4 ml-24">
                       <label
                         className="block mb-1 text-lg font-semibold text-black"
-                        htmlFor={`${field}-${id}-rule-mimes`}
+                        htmlFor={`field-${id}-rule-mimes`}
                       >
                         Enter file mimes (Comma seperated) for the field:
                       </label>
                       <input
                         className="appearance-none block w-full bg-white text-gray-900 font-normal mt-2 rounded-lg py-3 px-3 hover:bg-blue-100 focus:ring-blue-500 focus:border-3 focus:border-blue-500 leading-tight focus:outline-none"
                         type="text"
-                        name={`${field}-${id}-rule-mimes`}
-                        id={`${field}-${id}-rule-mimes`}
+                        name={`field-${id}-rule-mimes`}
+                        id={`field-${id}-rule-mimes`}
                       />
                     </div>
                   </div>
@@ -591,19 +589,20 @@ export default function NewModule() {
     let data = new FormData(e.target);
     data.append("fields", JSON.stringify(fields));
     data.append("options", JSON.stringify(options));
+    data.append("customClasses", useCustomClasses === true ? 1 : 0);
+    data.append("customCss", useCustomCSS === true ? 1 : 0);
 
     toast.promise(axios.post("/modules", data), {
       pending: {
         render() {
           setIsLoading(true);
-          return "Signing in......";
+          return "Submitting......";
         },
       },
       success: {
         render({ data }) {
           setIsLoading(false);
-          auth().setToken(data.data);
-          return "Logged in successfully";
+          return "Submitted successfully";
         },
       },
       error: {
@@ -611,9 +610,6 @@ export default function NewModule() {
           setIsLoading(false);
           let status = data.response.status;
           data = data.response.data;
-          if (status === 404) {
-            return "Email doesn't exist. Please register!";
-          }
           if (status === 422) {
             return Object.values(data.errors)[0].toString();
           } else {
@@ -627,7 +623,10 @@ export default function NewModule() {
   return (
     <div>
       <div className="">
-        <div class="w-full ml-4 mt-3 mb-6 lg:w-[100%] xl:w-[80%] 2xl:w-[85%]">
+        <form
+          onSubmit={handleSubmit}
+          class="w-full mb-6 lg:w-[100%] xl:w-[80%] 2xl:w-[85%]"
+        >
           <div className="w-full md:w-full px-3 mb-4">
             <label className="block mb-1 text-lg font-semibold text-black">
               Enter Name of the module:
@@ -730,6 +729,7 @@ export default function NewModule() {
                 </option>
               </select>
               <button
+                type={"button"}
                 className="ml-3 hover:bg-blue-500 hover:text-white bg-white text-blue-500 border-blue-500 border-2 font-semibold text-lg px-4 py-2 rounded-xl"
                 onClick={() => addNewField(newField)}
               >
@@ -738,6 +738,7 @@ export default function NewModule() {
             </div>
             <div className="flex justify-end gap-2">
               <button
+                type={"button"}
                 className={
                   useCustomClasses == false
                     ? "  bg-white text-blue-500 border-white border-2 font-semibold text-lg px-4 py-2 rounded-xl"
@@ -755,6 +756,7 @@ export default function NewModule() {
                     ? "  bg-white text-blue-500 border-white border-2 font-semibold text-lg px-4 py-2 rounded-xl"
                     : " bg-blue-500 text-white border-blue-500 border-2 font-semibold text-lg px-4 py-2 rounded-xl"
                 }
+                type={"button"}
               >
                 Toggle Custom CSS
               </button>
@@ -762,12 +764,12 @@ export default function NewModule() {
           </div>
           <br />
           <br />
-          <form>
-            {Object.entries(fields).map(([id, field]) =>
-              renderField(field, id)
-            )}
-          </form>
-        </div>
+          {Object.entries(fields).map(([id, field]) => renderField(field, id))}
+
+          <button type="submit" className="bg-white text-center p-5 rounded-xl">
+            SUBMIT
+          </button>
+        </form>
       </div>
     </div>
   );
