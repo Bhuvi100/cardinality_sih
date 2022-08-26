@@ -397,6 +397,12 @@ export default function Register() {
                     {isLoading ? "Submitting" : "Submit"}
                   </button>
                 </div>
+                <p class="desc text-gray-500 text-center mt-4">
+                  Already have an account?{" "}
+                  <a href="/login" className="text-blue-600">
+                    Login
+                  </a>
+                </p>
               </form>
             </div>
           </div>

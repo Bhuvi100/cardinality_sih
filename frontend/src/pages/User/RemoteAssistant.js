@@ -4,11 +4,11 @@ import NavBar from "../../components/Navbar";
 export default function RemoteAssistant() {
   const [step, setStep] = useState(1);
   return (
-    <div>
+    <div className="pb-10">
       <NavBar currentMenu="Remote assistance" />
       {step == 1 && (
-        <div className="mt-10 flex justify-center space-x-5">
-          <div className="bg-white rounded-lg p-10">
+        <div className="mt-10 flex-col md:flex  space-y-5 justify-center space-x-5">
+          <div className="bg-white rounded-lg p-10 m-5">
             <h1 className="title text-xl text-center">
               Schedule remote assistance
             </h1>
@@ -40,7 +40,7 @@ export default function RemoteAssistant() {
             </div>
           </div>
 
-          <div className="bg-white rounded-lg p-10">
+          <div className="bg-white rounded-lg p-10 m-5">
             <h1 className="title text-xl text-center mb-10">
               Connect existing host
             </h1>

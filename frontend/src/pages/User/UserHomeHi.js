@@ -5,7 +5,7 @@ export default function UserHomeHi() {
   const [search, setSearch] = useState(true);
   return (
     <div>
-      <NavBar currentMenu="Home" />
+      <NavBar currentMenu="घर" />
       <div className="mt-10 flex justify-center space-x-4">
         <div class="relative w-1/2">
           <input
