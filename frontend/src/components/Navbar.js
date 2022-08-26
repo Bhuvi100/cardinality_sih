@@ -25,12 +25,12 @@ export default function NavBar(props) {
             </button>
             <ul class="dropdown-menu absolute hidden rounded-xl text-gray-900 bg-gray-200 pt-1 mr-10">
               <li class="rounded-xl bg-gray-200 hover:bg-gray-400 py-2 px-10 text-left mr-10">
-                <a href="#">Tamil</a>
+                <a href="/ta/dashboard">Tamil</a>
               </li>
               <li class="">
                 <a
                   class="bg-gray-200 rounded-xl hover:bg-gray-400 py-2 px-10 block whitespace-no-wrap mr-10"
-                  href="#"
+                  href="/hi/dashboard/"
                 >
                   Hindi
                 </a>
@@ -38,9 +38,9 @@ export default function NavBar(props) {
               <li class="">
                 <a
                   class="rounded-xl bg-gray-200 hover:bg-gray-400 py-2 px-10 block whitespace-no-wrap mr-10"
-                  href="#"
+                  href="/dashboard"
                 >
-                  Telugu
+                  English
                 </a>
               </li>
             </ul>

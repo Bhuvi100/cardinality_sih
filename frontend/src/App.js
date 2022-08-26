@@ -18,7 +18,10 @@ import NewModule from "./pages/Admin/NewModule";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import EmailVerify from "./pages/EmailVerify";
 import ResetPassword from "./pages/ResetPassword";
-import {ToastContainer} from "react-toastify";
+import { ToastContainer } from "react-toastify";
+import LandingPageHi from "./pages/LandingPageHi";
+import UserDashboardHi from "./pages/User/UserDashboardHi";
+import UserDashboardTa from "./pages/User/UserDashboardTa";
 
 function App() {
   return (
@@ -27,6 +30,9 @@ function App() {
         <Routes>
           <Route path="/temp" element={<Temp />} />
           <Route exact path="/" element={<Landing />} />
+          <Route exact path="/hi/" element={<LandingPageHi />} />
+          <Route exact path="/hi/dashboard" element={<UserDashboardHi />} />
+          <Route exact path="/ta/dashboard" element={<UserDashboardTa />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
