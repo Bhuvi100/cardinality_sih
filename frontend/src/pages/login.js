@@ -52,7 +52,7 @@ export default function Login() {
   return (
     <div>
       <div class="h-screen flex">
-        <div class="flex w-1/2 bg-gradient-to-r from-sky-400 to-blue-500 i justify-around items-center">
+        <div class="md:flex hidden w-1/2 bg-gradient-to-r from-sky-400 to-blue-500 i justify-around items-center">
           <div className="">
             <div className="logpic w-3/5 mx-auto">
               <img src={LoginPicNew} alt="React Logo" />
@@ -60,13 +60,15 @@ export default function Login() {
             <h1 class="text-white text-center font-bold text-4xl font-sans">
               Shikaayat Samarthan
             </h1>
-            <p class="text-white text-center mt-1">Submit Queries and Solve Problems</p>
+            <p class="text-white text-center mt-1">
+              Submit Queries and Solve Problems
+            </p>
             {/* <button type="submit" class="block w-28 bg-white text-blue-600 mt-4 py-2 rounded-2xl font-bold mb-2">Read More</button> */}
           </div>
         </div>
         <form
           onSubmit={handleLoginSubmit}
-          class="flex flex-col w-1/2 justify-center items-center bg-white"
+          class="flex flex-col ml-20 md:ml-0 w-1/2 justify-center items-center bg-white"
         >
           <h1 class="text-gray-800 font-bold text-4xl mb-2">Login</h1>
           <p class="text-md font-normal text-gray-600 mb-7">Welcome Back !</p>
