@@ -45,7 +45,7 @@ export default function AdminUsers() {
                   <td class="px-5 py-4">aswathy@gmail.com</td>
                   <td class="px-5 py-4 text-green-600 font-semibold">Student </td>
                   <td class="px-5 py-4">TamilNadu</td>
-                  <td class="px-5 py-4">20</td>
+                  <td class="px-5 py-4">1</td>
                   <td class="px-5 py-4">
                     <button
                       class="flex flex-row bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-4 border-2 border-blue-500 hover:border-transparent rounded"
@@ -75,12 +75,12 @@ export default function AdminUsers() {
                     scope="row"
                     class="px-6 py-4 font-semibold  whitespace-nowrap "
                   >
-                    Aswathy
+                    Shametha
                   </th>
-                  <td class="px-5 py-4">aswathy@gmail.com</td>
+                  <td class="px-5 py-4">shametha@gmail.com</td>
                   <td class="px-5 py-4 text-green-600 font-semibold">Student </td>
-                  <td class="px-5 py-4">TamilNadu</td>
-                  <td class="px-5 py-4">20</td>
+                  <td class="px-5 py-4">Karnataka</td>
+                  <td class="px-5 py-4">9</td>
                   <td class="px-5 py-4">
                     <button
                       class="flex flex-row bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-4 border-2 border-blue-500 hover:border-transparent rounded"
@@ -110,12 +110,12 @@ export default function AdminUsers() {
                     scope="row"
                     class="px-6 py-4 font-semibold  whitespace-nowrap "
                   >
-                    Aswathy
+                    Prithika
                   </th>
-                  <td class="px-5 py-4">aswathy@gmail.com</td>
-                  <td class="px-5 py-4 text-green-600 font-semibold">Student </td>
-                  <td class="px-5 py-4">TamilNadu</td>
-                  <td class="px-5 py-4">20</td>
+                  <td class="px-5 py-4">prithika@gmail.com</td>
+                  <td class="px-5 py-4 text-green-600 font-semibold">Staff </td>
+                  <td class="px-5 py-4">Andhra Pradesh</td>
+                  <td class="px-5 py-4">2</td>
                   <td class="px-5 py-4">
                     <button
                       class="flex flex-row bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-4 border-2 border-blue-500 hover:border-transparent rounded"
@@ -145,12 +145,12 @@ export default function AdminUsers() {
                     scope="row"
                     class="px-6 py-4 font-semibold  whitespace-nowrap "
                   >
-                    Aswathy
+                    SasiDharan
                   </th>
-                  <td class="px-5 py-4">aswathy@gmail.com</td>
+                  <td class="px-5 py-4">sasi@gmail.com</td>
                   <td class="px-5 py-4 text-green-600 font-semibold">Student </td>
-                  <td class="px-5 py-4">TamilNadu</td>
-                  <td class="px-5 py-4">20</td>
+                  <td class="px-5 py-4">Delhi</td>
+                  <td class="px-5 py-4">3</td>
                   <td class="px-5 py-4">
                     <button
                       class="flex flex-row bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-4 border-2 border-blue-500 hover:border-transparent rounded"

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ModuleTable from "../../components/ModuleTable";
+import QueryTable from "../../components/QueryTable";
 import NavBar from "../../components/Navbar";
 
 export default function AdminQueries() {
@@ -34,7 +34,7 @@ export default function AdminQueries() {
                 </div>
               </div>
               </button>
-          </div> : <ModuleTable setModtable={setModtable}/>}
+          </div> : <QueryTable setModtable={setModtable}/>}
         </div>
         <div className="w-1/4">
           <details open class="overflow-hidden border border-gray-200 rounded">
