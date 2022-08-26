@@ -3,230 +3,136 @@ import NavBar from "../../components/Navbar";
 
 export default function ResolverSocialQueries() {
   const [query, setQuery] = useState(0);
+  const [modtable, setModtable] = useState(0);
 
   return (
     <div>
-      <NavBar currentMenu="Queries" />
-
-      <div className="flex justify-between mr-4">
-        <div class="px-6 pt-6 2xl:container w-3/4">
-          <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-full">
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
-              <thead class=" title text-gray-900 uppercase text-lg bg-[#E4EAEB]  dark:text-[#273339]">
-                <tr>
-                  <th scope="col" class="px-5 py-5">
-                    Query ID
-                  </th>
-                  <th scope="col" class="px-5 py-5">
-                    Category
-                  </th>
-                  <th scope="col" class="px-5 py-5">
-                    Module Name
-                  </th>
-                  <th scope="col" class="px-5 py-5">
-                    Raised On
-                  </th>
-                  <th scope="col" class="px-5 py-5 ">
-                    Query Status
-                  </th>
-                  <th scope="col" class="px-5 py-5">
-                    Details
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="">
-                <tr class=" text-lg  font-normal  text-[#273339] dark:border-gray-800 bg-white bg-opacity-60">
-                  <th
-                    scope="row"
-                    class="px-6 py-4 font-semibold  whitespace-nowrap "
-                  >
-                    INTR20220817091123444
-                  </th>
-                  <td class="px-5 py-4">Internship</td>
-                  <td class="px-5 py-4 ">AICTE Internship</td>
-                  <td class="px-5 py-4">17-08-2022</td>
-                  <td class="flex flex-row px-5 py-4 mt-3 text-green-600 font-semibold">
-                    Resolved
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-5 w-5 mt-1 ml-2"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </td>
-                  <td class="px-5 py-4">
-                    <button
-                      class="flex flex-row bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border-2 border-blue-500 hover:border-transparent rounded"
-                      onClick={() => {
-                        setQuery(1);
-                      }}
-                    >
-                      View
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-5 w-5 mt-1 ml-2"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                        <path
-                          fill-rule="evenodd"
-                          d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                    </button>
-                  </td>
-                </tr>
-                <tr class=" text-lg  font-normal  text-[#273339] dark:border-gray-800 bg-white bg-opacity-50">
-                  <th
-                    scope="row"
-                    class="px-6 py-4 font-semibold  whitespace-nowrap "
-                  >
-                    INTR20220817091123444
-                  </th>
-                  <td class="px-5 py-4">Internship</td>
-                  <td class="px-5 py-4 ">AICTE Internship</td>
-                  <td class="px-5 py-4">17-08-2022</td>
-                  <td class="flex flex-row px-5 py-4 mt-3 text-[#2368FB] font-semibold">
-                    Resolved
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-5 w-5 mt-1 ml-2"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </td>
-                  <td class="px-5 py-4">
-                    <button
-                      class="flex flex-row bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border-2 border-blue-500 hover:border-transparent rounded"
-                      onClick={() => {
-                        setQuery(1);
-                      }}
-                    >
-                      View
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-5 w-5 mt-1 ml-2"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                        <path
-                          fill-rule="evenodd"
-                          d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div className="w-1/4">
-          <details open class="overflow-hidden border border-gray-200 rounded">
-            <summary class="flex items-center justify-between px-5 py-3 bg-gray-100 lg:hidden">
-              <span class="text-sm font-medium"> Toggle Filters </span>
-
-              <svg
-                class="w-5 h-5"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+      <NavBar currentMenu="Twitter Queries" />
+      <button
+        class="px-3 py-1 mb-3 text-blue-600 font-semibold hover:bg-blue-500 hover:text-white bg-white border-2 border-blue-500 rounded-xl"
+        onClick={() => setModtable(0)}
+      >
+        Back
+      </button>
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-full">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
+          <thead class=" title text-gray-900 uppercase text-lg bg-[#E4EAEB]  dark:text-[#273339]">
+            <tr>
+              <th scope="col" class="px-5 py-5">
+                Username
+              </th>
+              <th scope="col" class="px-5 py-5">
+                Summary
+              </th>
+              <th scope="col" class="px-5 py-5">
+                Posted At
+              </th>
+              <th scope="col" class="px-5 py-5 text-center">
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody className="">
+            <tr class=" text-lg  font-normal  text-[#273339] dark:border-gray-800 bg-white bg-opacity-50">
+              <th
+                scope="row"
+                class="px-6 py-4 font-semibold  whitespace-nowrap "
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </summary>
+                Bhuvanesh
+              </th>
+              <td class="px-5 py-4">
+                IIT-BHU is conducting a wonderful hackathon
+              </td>
+              <td class="px-5 py-4 text-base font-semibold">17-08-2022</td>
 
-            <form action="" class="border-t border-gray-200 lg:border-t-0">
-              <fieldset>
-                <legend class="block title w-full px-5 py-3 text-xs text-white bg-[#2368FB]">
-                  User designation
-                </legend>
-
-                <div class="px-5 py-6 space-y-2">
-                  <div class="flex items-center">
-                    <input
-                      id="toy"
-                      type="checkbox"
-                      name="type[toy]"
-                      class="w-5 h-5 border-gray-300 rounded"
-                    />
-
-                    <label for="toy" class="ml-3 text-sm font-medium">
-                      Student
-                    </label>
-                  </div>
-
-                  <div class="flex items-center">
-                    <input
-                      id="game"
-                      type="checkbox"
-                      name="type[game]"
-                      class="w-5 h-5 border-gray-300 rounded"
-                    />
-
-                    <label for="game" class="ml-3 text-sm font-medium">
-                      SPOC
-                    </label>
-                  </div>
-
-                  <div class="flex items-center">
-                    <input
-                      id="outdoor"
-                      type="checkbox"
-                      name="type[outdoor]"
-                      class="w-5 h-5 border-gray-300 rounded"
-                    />
-
-                    <label for="outdoor" class="ml-3 text-sm font-medium">
-                      Faculty
-                    </label>
-                  </div>
-
-                  <div class="pt-2">
-                    <button
-                      type="button"
-                      class="text-xs text-gray-800 underline"
-                    >
-                      Reset Type
-                    </button>
-                  </div>
+              <td class="px-5 py-4">
+                <div className="flex flex-row gap-3 justify-center">
+                  <button class="flex flex-row bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-3 border-2 border-blue-500 hover:border-transparent rounded">
+                    View
+                  </button>
+                  <button class="flex flex-row bg-transparent hover:bg-yellow-500 text-yellow-700 font-semibold hover:text-white py-2 px-3 border-2 border-yellow-500 hover:border-transparent rounded">
+                    Noted
+                  </button>
+                  <button class="flex flex-row bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-3 border-2 border-green-500 hover:border-transparent rounded">
+                    Resolved
+                  </button>
                 </div>
-              </fieldset>
+              </td>
+            </tr>
+            <tr class=" text-lg  font-normal  text-[#273339] dark:border-gray-800 bg-white bg-opacity-50">
+              <th
+                scope="row"
+                class="px-6 py-4 font-semibold  whitespace-nowrap "
+              >
+                Shametha
+              </th>
+              <td class="px-5 py-4">SIH is a great initiative</td>
+              <td class="px-5 py-4 text-base font-semibold">19-08-2022</td>
 
-              <div class="flex justify-between px-5 py-3 border-t border-gray-200">
-                <button
-                  name="commit"
-                  type="button"
-                  class="px-5 py-3 text-xs title  text-white bg-[#2368FB] rounded"
-                >
-                  Apply Filters
-                </button>
-              </div>
-            </form>
-          </details>
-        </div>
+              <td class="px-5 py-4">
+                <div className="flex flex-row gap-3 justify-center">
+                  <button class="flex flex-row bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-3 border-2 border-blue-500 hover:border-transparent rounded">
+                    View
+                  </button>
+                  <button class="flex flex-row bg-transparent hover:bg-yellow-500 text-yellow-700 font-semibold hover:text-white py-2 px-3 border-2 border-yellow-500 hover:border-transparent rounded">
+                    Noted
+                  </button>
+                  <button class="flex flex-row bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-3 border-2 border-green-500 hover:border-transparent rounded">
+                    Resolved
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr class=" text-lg  font-normal  text-[#273339] dark:border-gray-800 bg-white bg-opacity-50">
+              <th
+                scope="row"
+                class="px-6 py-4 font-semibold  whitespace-nowrap "
+              >
+                Kumaraguru
+              </th>
+              <td class="px-5 py-4">Need guidance to submit my patent</td>
+              <td class="px-5 py-4 text-base font-semibold">21-08-2022</td>
+
+              <td class="px-5 py-4">
+                <div className="flex flex-row gap-3 justify-center">
+                  <button class="flex flex-row bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-3 border-2 border-blue-500 hover:border-transparent rounded">
+                    View
+                  </button>
+                  <button class="flex flex-row bg-transparent hover:bg-yellow-500 text-yellow-700 font-semibold hover:text-white py-2 px-3 border-2 border-yellow-500 hover:border-transparent rounded">
+                    Noted
+                  </button>
+                  <button class="flex flex-row bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-3 border-2 border-green-500 hover:border-transparent rounded">
+                    Resolved
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr class=" text-lg  font-normal  text-[#273339] dark:border-gray-800 bg-white bg-opacity-50">
+              <th
+                scope="row"
+                class="px-6 py-4 font-semibold  whitespace-nowrap "
+              >
+                Prithika
+              </th>
+              <td class="px-5 py-4">XYZ sanitation is very poor</td>
+              <td class="px-5 py-4 text-base font-semibold">23-08-2022</td>
+
+              <td class="px-5 py-4">
+                <div className="flex flex-row gap-3 justify-center">
+                  <button class="flex flex-row bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-3 border-2 border-blue-500 hover:border-transparent rounded">
+                    View
+                  </button>
+                  <button class="flex flex-row bg-transparent hover:bg-yellow-500 text-yellow-700 font-semibold hover:text-white py-2 px-3 border-2 border-yellow-500 hover:border-transparent rounded">
+                    Noted
+                  </button>
+                  <button class="flex flex-row bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-3 border-2 border-green-500 hover:border-transparent rounded">
+                    Resolved
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   );
