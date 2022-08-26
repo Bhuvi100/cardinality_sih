@@ -106,7 +106,7 @@ export default function Register() {
             // auth().setToken(data.data);
             RouteHelper.redirect("/login");
           }, 5000);
-          return "Registered successfully! Please check your email for the verification email.";
+          return "Registered successfully! Please login to continue.";
         },
       },
       error: {

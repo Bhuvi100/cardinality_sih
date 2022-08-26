@@ -10,11 +10,9 @@ class ModulesController extends Controller
 {
     public function index()
     {
-
-    }
-
-    public function create()
-    {
+        return
+            ModuleResource::collection(Module::where('for_institute',auth()->user()->role === 'institute')
+                ->get());
     }
 
     public function store(Request $request)
@@ -94,7 +92,7 @@ class ModulesController extends Controller
             [
                 'name' => $request->name,
                 'description' => $request->description,
-                'image' => $request->file('image')->store('modules', 'public'),
+//                'image' => $request->file('image')->store('modules', 'public'),
                 'fields' => $fields,
                 'rules' => $rules,
                 'css' => $css,

@@ -12,14 +12,11 @@ export default function GrievanceForm(props) {
   const [currentModule, setCurrentModule] = useState(false);
 
   useState(() => {
-    axios.get("/modules/15").then((res) => {
+    axios.get("/modules/" + props.selected).then((res) => {
       setCurrentModule(res.data.data);
-    }); //TODO CHANGE MODULE ID TO PROPS.MODULE_ID
+    });
   }, []);
 
-  if (back === 1) {
-    return <UserDashboard />;
-  }
 
   if (currentModule === false) {
     return <Loading></Loading>;
@@ -34,7 +31,6 @@ export default function GrievanceForm(props) {
     if (css_json === '{""}') {
       return {};
     }
-    console.log(css_json);
     return JSON.parse(css_json);
   }
 
@@ -312,7 +308,6 @@ export default function GrievanceForm(props) {
               className={currentModule.classes[field]?.field ?? ""}
               style={cssToJson(currentModule.css[field]?.field ?? "")}
               type={"file"}
-              defaultValue={properties.default}
               required={currentModule.rules[field].required}
               name={field}
               accept={currentModule.rules[field].mimes ?? ""}
@@ -326,19 +321,19 @@ export default function GrievanceForm(props) {
     <div>
       <NavBar currentMenu="New Grievance" />
 
-      <div class="grid grid-cols-6">
-        <div className="col-span-1">
+      <div class="w-full grid grid-cols-12">
+        <div className="col-span-2">
           <button
             class="bg-transparent md:ml-3 md:mt-3 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
             onClick={() => {
-              setBack(1);
+              props.setSelected(false);
             }}
           >
             Back
           </button>
         </div>
-        <div class="col-span-4 flex justify-center my-2 mx-4 md:mx-0">
-          <form class="w-full max-w-xl bg-white rounded-lg shadow-xl p-6">
+        <div class="offset-2 col-span-9 flex justify-center my-2 mx-4 md:mx-0">
+          <form class="w-full bg-white rounded-lg shadow-xl p-6">
             <div class="flex flex-wrap -mx-3 mb-6">
               {Object.entries(currentModule.fields).map(
                 ([field, properties]) => {

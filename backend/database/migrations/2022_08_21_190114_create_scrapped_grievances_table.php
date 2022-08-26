@@ -10,11 +10,12 @@ return new class extends Migration {
         Schema::create('scrapped_grievances', function (Blueprint $table) {
             $table->id();
             $table->foreignId('module_id')->constrained('modules')->cascadeOnDelete();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('subject');
             $table->text('description');
-            $table->json('other_data');
-            $table->timestamp('resolved_at');
+            $table->json('other_data')->nullable();
+            $table->timestamp('resolved_at')->nullable();
+            $table->foreignId('resolved_by')->nullable()->constrained('users');
+            $table->text('solution')->nullable();
             $table->timestamps();
         });
     }

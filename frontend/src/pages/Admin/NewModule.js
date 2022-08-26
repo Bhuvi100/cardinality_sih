@@ -1,11 +1,11 @@
 import AdminSideBar from "./AdminSidebar";
 import NavBar from "../../components/Navbar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import auth from "../../utils/auth";
 import axios from "../../utils/axios";
 
-export default function NewModule() {
+export default function NewModule(props) {
   const field_defaults = {
     text: {
       rules: ["required", "length", "email"],
@@ -85,6 +85,15 @@ export default function NewModule() {
       },
     },
   };
+
+  const [currentModule, setCurrentModule] = useState({});
+
+  useEffect(() => {
+    axios.get("/modules/" + props.currentModule).then((res) => {
+      setCurrentModule(res.data.data);
+      // res.data.data.fields.forEach((field) => )
+    });
+  }, []);
 
   const [fields, setFields] = useState({});
   const [isLoading, setIsLoading] = useState(false);

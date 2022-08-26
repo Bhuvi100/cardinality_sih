@@ -31,8 +31,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('faq', [\App\Http\Controllers\FaqController::class, 'indexa']);
-Route::get('faq/{query}', [\App\Http\Controllers\FaqController::class, 'index']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('faq',[\App\Http\Controllers\FaqController::class,'indexa']);
+    Route::get('faq/{query}',[\App\Http\Controllers\FaqController::class,'index']);
 
-Route::get('modules/{module}', [\App\Http\Controllers\ModulesController::class, 'show']);
-Route::post('modules', [\App\Http\Controllers\ModulesController::class, 'store']);
+    Route::get('modules/{module}',[\App\Http\Controllers\ModulesController::class,'show']);
+    Route::get('modules',[\App\Http\Controllers\ModulesController::class,'index']);
+    Route::post('modules',[\App\Http\Controllers\ModulesController::class,'store']);
+});

@@ -9,6 +9,7 @@ export default function UserHome() {
   const [isSelected, setIsSelected] = useState(false);
 
   const [faq, setFaq] = useState(false);
+  const [modules, setModules] = useState(false);
 
   useEffect(() => {
     axios
@@ -16,12 +17,19 @@ export default function UserHome() {
       .then((res) => setFaq(res.data));
   }, [search]);
 
+  useEffect(
+    () => {
+      axios.get("/modules").then((res) => setModules(res.data.data))
+    },
+    []
+  );
+
   if (faq === false) {
     return <Loading></Loading>;
   }
 
   if (isSelected) {
-    return <GrievanceForm setIsSelected={setIsSelected}></GrievanceForm>;
+    return <GrievanceForm setSelected={setIsSelected} selected={isSelected}></GrievanceForm>;
   }
 
   return (
@@ -57,33 +65,7 @@ export default function UserHome() {
       {faq.length !== 0 ? (
         <div>
           <div className="mt-8 pl-8">
-            <h1 className="text-xl title text-[#273339]">
-              Suggested Categories
-            </h1>
-            <div className="flex space-x-4 mt-4">
-              <div
-                class="block overflow-hidden rounded-2xl w-80 shadow-xl"
-                onClick={() => setIsSelected(1)}
-              >
-                <img
-                  class="object-cover w-full h-32"
-                  src="https://www.freshersnow.com/wp-content/uploads/2019/12/AICTE-PG-Scholarship.png"
-                />
-
-                <div class="p-4 bg-white bg-opacity-50 border-white">
-                  <h5 class="text-sm title text-[#273339]">
-                    AICTE Scholarships
-                  </h5>
-
-                  <p class="mt-1 text-xs text-gray-500 desc">
-                    Kaasu kudupana nu theriyathu aana kandipa kadupu kudupan
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="mt-8 pl-8">
-            <h1 className="text-xl title text-[#273339]">Similar griviences</h1>
+            <h1 className="text-xl title text-[#273339]">Similar grievances</h1>
             {faq.map((f, index) => (
               <div
                 key={index}
@@ -127,7 +109,7 @@ export default function UserHome() {
                   </summary>
 
                   <p class="mt-4 text-sm leading-relaxed text-gray-500">
-                    {f.description}
+                    {f.solution}
                   </p>
                 </details>
               </div>
@@ -135,17 +117,37 @@ export default function UserHome() {
           </div>
         </div>
       ) : (
-        <div className="mt-20 text-center">
+        <div className="mt-20 text-center mb-8">
           <p>
             No similar grievances were found, please submit your grievance and
             we will reach back to you with a solution.
           </p>
-          <button
-            className="bg-blue-500 rounded p-2 mt-4"
-            onClick={() => setIsSelected(1)}
-          >
-            Submit your grievance
-          </button>
+          <div className="mt-8 pl-8">
+            <h1 className="text-xl title text-[#273339]">
+              Suggested Categories
+            </h1>
+            <div className="grid grid-cols-3">{modules.map((m, index) => <div key={index} className=" mt-4">
+              <div
+                  className="block overflow-hidden rounded-2xl w-80 shadow-xl"
+                  onClick={() => setIsSelected(m.id)}
+              >
+                <img
+                    className="object-cover w-full h-32"
+                    src={m.image}
+                />
+
+                <div className="p-4 bg-white bg-opacity-50 border-white">
+                  <h5 className="text-sm title text-[#273339]">
+                    {m.name}
+                  </h5>
+
+                  <p className="mt-1 text-xs text-gray-500 desc">
+                    {m.description}
+                  </p>
+                </div>
+              </div>
+            </div>)}</div>
+          </div>
         </div>
       )}
     </div>

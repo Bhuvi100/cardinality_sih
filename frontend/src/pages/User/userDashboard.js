@@ -7,6 +7,20 @@ import logo from "../../assets/logoo.png";
 
 export default function UserDashboard() {
   const [menu, setMenu] = useState(1);
+
+  function renderMenu() {
+    switch (menu) {
+      case 1:
+        return <UserHome />;
+      case 2:
+        return <MyQueries />;
+      case 3:
+        return <Profile />;
+      case 4:
+        return <RemoteAssistant />;
+    }
+  }
+
   return (
     <div className="">
       <div className="flex min-h-full w-full gradient-bg overflow-scroll bg-[#dffaff]">
@@ -150,12 +164,7 @@ export default function UserDashboard() {
             </form>
           </div>
         </div>
-        <div className="w-full h-screen ml-16 md:ml-80">
-          {menu == 1 && <UserHome />}
-          {menu == 2 && <MyQueries />}
-          {menu == 3 && <Profile />}
-          {menu == 4 && <RemoteAssistant />}
-        </div>
+        <div className="w-full h-screen ml-16 md:ml-80">{renderMenu()}</div>
       </div>
     </div>
   );
