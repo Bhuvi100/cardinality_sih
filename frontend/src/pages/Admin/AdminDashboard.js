@@ -11,7 +11,7 @@ export default function AdminDashboard() {
   const [menu, setMenu] = useState(1);
   return (
     <div className="">
-      <div className="flex min-h-full w-full gradient-bg bg-[#dffaff]">
+      <div className="flex min-h-full w-full gradient-bg overflow-scroll bg-[#dffaff]">
         <div class="flex fixed z-10 bottom-0 left-0 flex-col bg-white bg-opacity-60 justify-between w-16 md:w-1/5 h-screen  border-r">
           <div>
             <div className="flex justify-center">
@@ -101,19 +101,9 @@ export default function AdminDashboard() {
                           : "desc w-full   flex space-x-4 px-2 py-1.5 text-gray-500 rounded hover:bg-gray-50 hover:text-gray-700 relative group"
                       }
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        class="w-6 h-6"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M8.25 6.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM15.75 9.75a3 3 0 116 0 3 3 0 01-6 0zM2.25 9.75a3 3 0 116 0 3 3 0 01-6 0zM6.31 15.117A6.745 6.745 0 0112 12a6.745 6.745 0 016.709 7.498.75.75 0 01-.372.568A12.696 12.696 0 0112 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 01-.372-.568 6.787 6.787 0 011.019-4.38z"
-                          clip-rule="evenodd"
-                        />
-                        <path d="M5.082 14.254a8.287 8.287 0 00-1.308 5.135 9.687 9.687 0 01-1.764-.44l-.115-.04a.563.563 0 01-.373-.487l-.01-.121a3.75 3.75 0 013.57-4.047zM20.226 19.389a8.287 8.287 0 00-1.308-5.135 3.75 3.75 0 013.57 4.047l-.01.121a.563.563 0 01-.373.486l-.115.04c-.567.2-1.156.349-1.764.441z" />
-                      </svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-twitter w-6 h-6 mt-1" viewBox="0 0 16 16">
+  <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+</svg>
 
                       <span class="text-xl hidden md:block">
                         Twitter queries
@@ -147,7 +137,6 @@ export default function AdminDashboard() {
                       <span class="text-xl hidden md:block">Email queries</span>
                     </button>
                   </li>
-
                   <li>
                     <button
                       onClick={() => setMenu(5)}
@@ -237,6 +226,7 @@ export default function AdminDashboard() {
           {menu == 5 && <AdminModules />}
           {menu == 6 && <AdminResolvers />}
           {menu == 8 && <MailQueries />}
+
         </div>
       </div>
     </div>

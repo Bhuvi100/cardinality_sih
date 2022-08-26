@@ -8,7 +8,8 @@ export default function SocialQueries() {
 
   return (
     <div>
-      <NavBar currentMenu="Twitter queries" />
+
+      <NavBar currentMenu="Social Queries" />
 
       <div className="flex justify-between mr-4">
         <div class="px-6 pt-6 2xl:container w-3/4">
