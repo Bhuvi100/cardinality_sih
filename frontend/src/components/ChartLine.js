@@ -59,7 +59,7 @@ export const data = {
 
 export default function ChartLine() {
   return (
-    <div className='ml-12 w-4/5'>
+    <div className='md:ml-12 md:w-4/5 w-5/6'>
   <Line options={options} data={data}/>
   </div>
   )

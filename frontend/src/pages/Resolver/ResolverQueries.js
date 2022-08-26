@@ -8,8 +8,8 @@ export default function ResolverQueries() {
     <div>
       <NavBar currentMenu="Queries" />
 
-      <div className="flex justify-between mr-4">
-        <div class="px-6 pt-6 2xl:container w-3/4">
+      <div className="flex md:justify-between mr-4">
+        <div class="md:px-6 px-3 md:pt-6 pt-4 2xl:container w-3/5 md:w-3/4">
           <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-full">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
               <thead class=" title text-gray-900 uppercase text-lg bg-[#E4EAEB]  dark:text-[#273339]">
@@ -137,9 +137,9 @@ export default function ResolverQueries() {
             </table>
           </div>
         </div>
-        <div className="w-1/4">
+        <div className="md:w-1/4">
           <details open class="overflow-hidden border border-gray-200 rounded">
-            <summary class="flex items-center justify-between px-5 py-3 bg-gray-100 lg:hidden">
+            <summary class="flex md:items-center md:justify-between px-5 py-3 bg-gray-100 lg:hidden">
               <span class="text-sm font-medium"> Toggle Filters </span>
 
               <svg

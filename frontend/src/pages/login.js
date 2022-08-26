@@ -58,9 +58,9 @@ export default function Login() {
               <img src={LoginPicNew} alt="React Logo" />
             </div>
             <h1 class="text-white text-center font-bold text-4xl font-sans">
-              App Name
+              Shikaayat Samarthan
             </h1>
-            <p class="text-white text-center mt-1">App Description</p>
+            <p class="text-white text-center mt-1">Submit Queries and Solve Problems</p>
             {/* <button type="submit" class="block w-28 bg-white text-blue-600 mt-4 py-2 rounded-2xl font-bold mb-2">Read More</button> */}
           </div>
         </div>

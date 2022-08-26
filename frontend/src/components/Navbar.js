@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function NavBar(props) {
   return (
-    <div class=" h-16  lg:py-2.5">
+    <div class=" h-16 mr-10 md:mr-0 lg:py-2.5">
       <div class="px-6 flex items-center justify-between 2xl:container">
         <h5 class="mt-2 title text-3xl ml-1 text-[#2368FB]  md:block">
           {props.currentMenu ?? "Dashboard"}

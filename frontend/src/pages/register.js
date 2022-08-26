@@ -336,7 +336,7 @@ export default function Register() {
                       debounce={500}
                       getOptions={getColleges}
                       className={
-                        "w-full p-2.5 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        "w-full p-2.5 border rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       }
                       placeholder={"Please select an institute"}
                       options={[

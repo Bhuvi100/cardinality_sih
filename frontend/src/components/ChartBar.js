@@ -57,7 +57,7 @@ export const data = {
 
 export function ChartBar() {
   return (
-<div className='w-4/5 ml-10'>
+<div className='md:w-4/5 w-5/6 md:ml-10'>
 <Bar options={options} data={data} />
 </div>
   )

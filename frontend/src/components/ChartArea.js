@@ -54,7 +54,7 @@ export const data = {
 
 export function ChartArea() {
   return (
-    <div className='h-96 w-1/2 ml-80 mx-auto '>
+    <div className='md:h-96 md:w-1/2 md:ml-80 md:mx-auto '>
         <Line options={options} data={data} />
     </div>
   )
