@@ -1,10 +1,30 @@
 import React, { useState } from "react";
 import SocialTable from "../../components/SocialTable";
 import NavBar from "../../components/Navbar";
+import {useEffect} from "react";
+import axios from "../../utils/axios";
+import Loading from "../../components/Loading";
 
 export default function SocialQueries() {
   const [query, setQuery] = useState(0);
   const [modtable, setModtable] = useState(0);
+  const [queries, setQueries] = useState([])
+
+
+  useEffect(() => {
+    axios
+        .post("http://127.0.0.1:8082/tweet", {
+          keyword: "smart india hackathon",
+          count: 8,
+        })
+        .then((res) => {
+          setQueries(res.data)
+        });
+  }, []);
+
+  if (queries.length === 0) {
+    return <Loading></Loading>
+  }
 
   return (
     <div>
@@ -34,10 +54,7 @@ export default function SocialQueries() {
                   </div>
                 </div>
               </button>
-            </div>
-          ) : (
-            <SocialTable setModtable={setModtable} />
-          )}
+          </div>) : <SocialTable queries={queries} setModtable={setModtable}/>}
         </div>
         <div className="w-1/4">
           <details open class="overflow-hidden border border-gray-200 rounded">

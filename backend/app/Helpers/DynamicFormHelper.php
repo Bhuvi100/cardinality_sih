@@ -96,7 +96,7 @@ trait DynamicFormHelper
     {
         return [
             'text' => ['required','nullable','min','max','email'],
-            'numeric' => ['required','nullable','min','max','digits_between'],
+            'numeric' => ['required','nullable','min','max'],
             'textarea' => ['required','nullable','min','max'],
             'radio' => ['required','nullable'],
             'checkbox' => ['required','nullable'],
