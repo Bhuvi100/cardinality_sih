@@ -10,7 +10,7 @@ export default function AdminDashboard() {
   const [menu, setMenu] = useState(1);
   return (
     <div className="">
-      <div className="flex min-h-full w-full gradient-bg bg-[#dffaff]">
+      <div className="flex min-h-full w-full gradient-bg overflow-scroll bg-[#dffaff]">
         <div class="flex fixed z-10 bottom-0 left-0 flex-col bg-white bg-opacity-60 justify-between w-16 md:w-1/5 h-screen  border-r">
           <div>
             <div className="flex justify-center">
